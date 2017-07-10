@@ -1,0 +1,7 @@
+$(function() {
+	$("a.group").colorbox({rel:"group1"})	;
+	/* onOpen event*/
+	/*$("a.group").colorbox({rel:"group1", onOpen:function(){
+		alert($(this).find('img').attr('src'));  
+	}})*/
+});

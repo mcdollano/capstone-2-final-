@@ -1,0 +1,22 @@
+$(document).ready(function() {
+ 
+  var owl = $(".variations #owl-demo");
+ 
+  owl.owlCarousel({
+     
+      itemsCustom : [
+        [0, 3],
+        [640, 2],
+        [768, 3],
+        [1024, 4]
+      ],
+      navigation : true,
+      rewindNav : false,
+      autoplayHoverPause : true
+      
+ 
+  });
+ 
+
+
+});

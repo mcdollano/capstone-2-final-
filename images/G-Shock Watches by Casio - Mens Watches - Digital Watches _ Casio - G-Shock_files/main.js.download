@@ -1,0 +1,985 @@
+$(window).on("load", function () {
+    $('body').addClass('loaded');
+
+    setTimeout(function () {
+        $('.site-loading-overlay').hide();
+    }, 300);
+})
+
+function resizeiframecent(ifid, oldx, oldy) {
+
+    var actualwidth = document.getElementById(ifid).offsetWidth;
+
+    var proporcion = actualwidth / oldx;
+    newheight = proporcion * oldy;
+    var newheight2 = Math.ceil(newheight);
+
+    document.getElementById(ifid).height = newheight2;
+
+}
+
+$(function () {
+
+    if ($("#instagram").length) {
+        $('#instagram').carouFredSel({
+            width: '100%',
+            margin: 'auto auto',
+            height: 'auto',
+            prev: '#previous',
+            next: '#next',
+            auto: false/*,
+             scroll:2*/
+        });
+    }
+
+    $(".sortx").on('click', function (e) {
+        $("#sort_order").val($(this).attr('data-sort'));
+        $("#sortproduct").submit();
+    })
+
+    $("span.chip").on('click', function () {
+        $(this).toggleClass('selected');
+    })
+
+
+    $(".button.collection-toggle").on('click', function (e) {
+        e.preventDefault();
+        $(this).siblings('a').css('background', '#c4c3c3').removeClass('selected');
+        $(this).css('background', '#000000').addClass('selected');
+    })
+
+    $("a:contains('go')").siblings('input').focus(function () {
+        $("#errormessage").animate({'opacity': '0'}, 2000);
+    })
+
+    $("a:contains('go')").on('click', function (e) {
+        e.preventDefault();
+        if ($(this).siblings('input').val().length < 5) {
+            $("#errormessage").animate({'opacity': '1'}, 2000);
+            $("#errormessage").text('Please Enter correct Zip Code').css({'color': 'red', 'text-align': 'center'});
+        }
+        $.ajax({
+            url: 'index.php/ajax/wheretobuy',
+
+            type: 'POST',
+            data: {
+                pline: $("a.selected").text(),
+                zip: $(this).siblings('input').val()
+            },
+            success: function (data) {
+                $(".store-list").empty();
+                $(".store-list").append(data);
+            },
+            error: function () {
+                alert('error loading');
+            }
+        });
+    });
+
+
+    var sec = '';
+    var path = window.location.pathname;
+    var url = path.split('/');
+    if (url.length > 0) {
+        if (url[1] == 'watches') {
+            if (url[2] == null || url[2] == '') {
+                sec = 'All'
+            } else {
+                sec = url[2];
+                // sec = sec.replace('_',' ');
+                console.log('SEC: '+sec);
+                if (sec == 'G-SHOCK_S_Series') {
+                    $("#men").removeClass('active');
+                    $("#women").addClass('active');
+                }
+            }
+            // $('.grouping.collapse h4:contains(Collection)').trigger('click');
+            if (sec == 'Master_of_G') {
+                $(".topLevel span").trigger('click');
+                $("#All .filter-sub").addClass('active');
+            }
+            // $(".initial-collection a").text(sec.replace('_', ' ').replace('_', ' '));
+        }
+    }
+
+
+    if (url.length > 0) {
+        if (url[1] == 'where_to_buy') {
+            $("a:contains('go)").on('click', function () {
+                procat = $('a').hasClass('active_').text();
+                //alert(procat);
+            })
+        }
+    }
+    /**********Start of Filckr***************************/
+    $('#flickr').jflickrfeed({
+        flickrbase: 'http://api.flickr.com/services/feeds/',
+        feedapi: 'photoset.gne',
+        limit: parseInt($("#numb_pics").val()),
+        qstrings: {nsid: $("#flickr_id").val(), set: $("#photoset_id").val()},
+        itemTemplate: '<li><a rel="group1" class="group1" title="{{title}}" href="{{image_b}}" ></a></li>'
+
+    }, function (data) {
+        $('#flickr a').colorbox();
+        jQuery('#flickr a').colorbox({maxWidth: '95%', maxHeight: '95%'});
+    });
+    /**********End of Filckr***************************/
+
+    path = window.location.pathname;
+    url = path.split('/');
+    if (url.length > 0) {
+        if (url[1] == 'happenings') {
+            if (!url[2]) {
+                $('#nav_happenings a:first-child').addClass('active');
+            } else {
+                $('#nav_happenings a:contains(' + url[2].toUpperCase() + ')').addClass('active');
+            }
+        }
+    }
+});
+
+//MAIN MENU DESKTOP
+// Function to show and hide the Watch Menu
+
+/*$('.watches-toggle,.search-toggle,.stores-toggle').on("click",function(e){
+ e.preventDefault();
+ })*/
+
+$('.watches-toggle').on({
+    mouseenter: function (e) {
+        height = 460;
+        $('.watch-navigation').addClass("active").css({height: height});
+        e.preventDefault();
+        closeMenuStores();
+    }
+});
+
+
+$(".watches-toggle").on('click', function (e) {
+    if ($(".watch-navigation").hasClass('active')) {
+        closeMenuWatches();
+    } else {
+        height = 450;
+        $('.watch-navigation').addClass("active").css({height: height});
+    }
+
+    // e.preventDefault();
+})
+
+$(".watch-navigation").on({
+    mouseleave: function (e) {
+        closeMenuWatches();
+        //e.preventDefault();
+    }
+})
+
+$('.stores-toggle').on({
+    mouseenter: function (e) {
+        otherHeight = 0;
+        $('.search-menu').removeClass("active").css({height: otherHeight});
+        height = 700;
+
+        /* check the window height before adding a smaller height */
+        windowHeight = (window.innerHeight ? window.innerHeight : $(window).height()) - 50;
+
+        if (height >= windowHeight) {
+            height = windowHeight;
+        }
+
+        $('.store-navigation').addClass("active").css({height: height});
+        e.preventDefault();
+        closeMenuWatches();
+    }
+});
+$(".store-navigation").on({
+    mouseleave: function (e) {
+        closeMenuStores();
+        e.preventDefault();
+    }
+})
+
+$('.search-toggle').on({
+    mouseenter: function (e) {
+        closeMenuStores()
+        closeMenuWatches()
+    },
+
+    click: function (e) {
+        otherHeight = 0;
+        $('.store-navigation').removeClass("active").css({height: otherHeight});
+
+        height = 110;
+        $('.search-menu').toggleClass("active").css({height: height});
+        e.preventDefault();
+        closeMenuStores();
+    }
+});
+$(".is-close-search").on("click", function (e) {
+    closeMenuSearch();
+    e.preventDefault();
+})
+
+$(".touch-menu-close").on("click", function (e) {
+    closeMenuSearch();
+    closeMenuStores()
+    closeMenuWatches()
+    e.preventDefault();
+})
+
+
+function closeMenuWatches() {
+    height = 0;
+    $('.watch-navigation').removeClass("active").css({height: height});
+}
+function closeMenuStores() {
+    height = 0;
+    $('.store-navigation').removeClass("active").css({height: height});
+}
+function closeMenuSearch() {
+    height = 0;
+    $('.search-menu').removeClass("active").css({height: height});
+}
+//end menu deskotp
+
+$('.controls').on("click", function (e) {
+    countWatches();
+})
+function countWatches() {
+    var totalWatches = $(".product-item").length;
+
+    if ($('.is-single-watches').length > 0) {
+        if (totalWatches == 1)
+        {
+            $('.shifted h1').html(totalWatches + " Watch");
+        }
+        else
+        {
+            $('.shifted h1').html(totalWatches + " Watches");
+        }
+    }
+}
+function isElementBottom(elementToBeChecked) {
+    var TopView = $(window).scrollTop();
+    var BotView = TopView + $(window).height();
+    var TopElement = $(elementToBeChecked).offset().top;
+    var BotElement = TopElement + $(elementToBeChecked).height();
+    return (BotElement <= BotView);
+}
+
+//add data-price for each item
+addDataPrice();
+function addDataPrice() {
+    $(".product-item").each(function (index) {
+        var thisPrice = $(this).find('.price').text();
+        thisPrice = thisPrice.substring(1);//remove $ sign
+
+        $(this).attr('data-price', thisPrice);
+    });
+}
+
+/**********Start of Filckr***************************/
+$(function () {
+    $('#flickr').jflickrfeed({
+        flickrbase: 'http://api.flickr.com/services/feeds/',
+        feedapi: 'photoset.gne',
+        limit: parseInt($("#numb_pics").val()),
+        qstrings: {
+
+            nsid: $("#flickr_id").val(),
+            set: $("#photoset_id").val()
+
+        },
+        itemTemplate: '<li><a rel="group1" class="group1" title="{{title}}" href="{{image_b}}" ><img src="{{image_s}}" title="{{title}}" /></a></li>'
+
+    }, function (data) {
+        $('#flickr a').colorbox();
+        jQuery('#flickr a').colorbox({maxWidth: '95%', maxHeight: '95%'});
+    });
+
+})
+
+
+/**********End of Filckr***************************/
+//searchResults();
+function searchResults() {
+    var parameters = location.search.substring(1);
+    if (parameters.length) {
+        var tableParameters = parameters.split("=");
+        searchResults = unescape(tableParameters[1]);
+        $("h1").append(' for: ' + searchResults);
+    }
+}
+
+//toggle filter
+$('.grouping.collapse h4').on("click", function (e) {
+    var thisBlocFilter = $(this).parents('.grouping').find('.bloc-filter:not(.master)');
+
+    thisBlocFilter.stop().slideToggle("slow");
+    if (thisBlocFilter.hasClass('open')) {
+        thisBlocFilter.removeClass('open');
+        thisBlocFilter.addClass('closed');
+        $(this).parent('fieldset').find('h4 span').text("+");
+    } else {
+        thisBlocFilter.removeClass('closed');
+        thisBlocFilter.addClass('open');
+        $(this).parent('fieldset').find('h4 span').text("-");
+    }
+    e.preventDefault();
+});
+
+function resetStates() {
+    $('.filter-sub.current').removeClass('current');
+}
+
+$('.filter-sub').on("click", function (e) {
+
+    $('.filter-sub').removeClass('active');
+    $(this).addClass('active');
+    var filter = [];
+    var mode = ''
+    filters = '.' + $(this).parent('div').attr('id');
+    if ($(this).parent('div').attr('id') == 'All') {
+        mode = 'all'
+        filter.push('.men');
+        filter.push('.masters');
+        $("span.chip").each(function () {
+            if ($(this).hasClass('selected')) {
+                $(this).toggleClass('selected');
+            }
+        })
+        $("input:checkbox").prop('checked', false);
+    } else {
+        filter.push('.'+$(this).parent('div').attr('id'))
+        gm =$(this).parent('div').attr('id');
+    }
+    if ($("input:checkbox:checked").length > 0) {
+        $("input:checkbox").each(function () {
+            if ($(this).is(':checked')) {
+                filter.push(filters + $(this).val());
+            }
+        })
+    } else {
+        filter.push(filters);
+    }
+
+    if (filter.length > 0) {
+
+        var mogfilter = filter.join(',');
+
+        $(".product-list2").mixItUp('filter', mogfilter);
+        $('.product-list2').on('mixEnd', function (e, state) {
+            var wc = $(".product-item:visible").size()
+            if (wc == 1)
+            {
+                $('.shifted h1').html(wc + " Watch");
+            }
+            else
+            {
+                $('.shifted h1').html(wc + " Watches");
+            }
+        });
+    }
+    resetStates()
+});
+
+
+$('.topLevel span').on("click", function (e) {
+    var thisBlocFilter = $(this).parent().parent().find('.bloc-filter.master');
+
+    thisBlocFilter.stop().slideToggle("slow");
+    if (thisBlocFilter.hasClass('open')) {
+        thisBlocFilter.removeClass('open');
+        thisBlocFilter.addClass('closed');
+        //$(this).parent().parent().find('.topLevel span').text("+");
+    } else {
+        thisBlocFilter.removeClass('closed');
+        thisBlocFilter.addClass('open');
+        //$(this).parent().parent().find('.topLevel span').text("-");
+    }
+    e.preventDefault();
+});
+
+$('#modal').hide();
+
+//------MODAL-----//
+//MODAL EMAIL
+$('.is-email-submit').on("click", function (e) {
+    e.preventDefault();
+    var patern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!patern.test($("#email").val())) {
+        var emailOverlay = $('<div class="modal-overlay">\
+	        <div class="vertical-align">\
+	            <div class="modal thank-you">\
+	                <a href="#" class="close"></a>\
+	                <h1 class="thankyou-title">Please check your email address and try again</h1>\
+	            </div>\
+	        </div><div class="black"><div>\
+	    </div>');
+        $('#content').append(emailOverlay);
+        $(emailOverlay).hide().fadeIn(500);
+        closeModalOnClick();
+    } else {
+        $.ajax({
+            url: '/index.php/ajax/stayUpdate',
+            type: 'POST',
+            data: {
+                email: $("#email").val()
+            },
+            success: function (data) {
+
+                var emailOverlay = $('<div class="modal-overlay">\
+					        <div class="vertical-align">\
+					            <div class="modal thank-you">\
+					                <a href="#" class="close"></a>\
+					                <h1 class="thankyou-title">Thank you for Subscribing</h1>\
+					                <p>You will receive news soon!</p>\
+					            </div>\
+					        </div><div class="black"><div>\
+					    </div>');
+
+
+                $('#content').append(emailOverlay);
+                $(emailOverlay).hide().fadeIn(500);
+                closeModalOnClick();
+            }
+
+        })
+    }
+});
+
+//MODAL SPEC (watch detail)
+$('.open-spec').on("click", function (e) {
+    e.preventDefault();
+    var currentOverview = $('.spec-details').html();
+    var emailOverlay = $('<div class="modal-overlay">\
+        <div class="vertical-align">\
+            <div class="modal"><a href="#" class="close"></a>' + currentOverview + '</div>\
+        </div><div class="black"><div>\
+    </div>');
+
+    $('#content').append(emailOverlay);
+    $(emailOverlay).hide().fadeIn(500);
+    closeModalOnClick();
+});
+
+//MODAL VIDEO
+$('.open-video').on("click", function (e) {
+    e.preventDefault();
+    var urlVideo = $(this).attr("href");
+    var emailOverlay = $('<div class="modal-overlay">\
+        <div class="vertical-align">\
+            <div class="modal video">\
+                <a href="#" class="close"></a>\
+                <iframe width="640" height="360" src="' + urlVideo + '" frameborder="0" allowfullscreen></iframe>\
+            </div>\
+        </div><div class="black"><div>\
+    </div>');
+
+    $('#content').append(emailOverlay);
+    $(emailOverlay).hide().fadeIn(500);
+    closeModalOnClick();
+});
+
+//MODAL DETAIL PRODUCT
+$('.product-enlarge').on("click", function (e) {
+    e.preventDefault();
+    var pathImg = $('.main-product-img').attr("src").replace(/xlarge/g, 'xxlarge');
+
+    var emailOverlay = $('<div class="modal-overlay">\
+        <div class="vertical-align">\
+            <div class="modal">\
+                <div class="vertical-align">\
+            <div class="modal">\
+                <a href="#" class="close_white"></a>\
+                <div id="carousel-home">\
+                    <div class="inner-img">\
+                        <div id="owl-demo" class="owl-carousel" ></div>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>\
+    </div>');
+
+    $.ajax({
+        url: "/watches/sliderImages",
+        type: 'get',
+        dataType: 'json',
+        data: {
+            watch: $("h2.detail-model").eq(0).text()
+        },
+        success: function (data) {
+            $.each(data, function (x, item) {
+                emailOverlay.find("#owl-demo").append("<img src='" + item + "'/>");
+            })
+            $('#content').append(emailOverlay);
+            $("#carousel-home #owl-demo").owlCarousel({
+                /*autoPlay : 5000,*/
+                autoPlay: false,
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                autoplayHoverPause: true,
+                singleItem: true
+
+
+            });
+            $(emailOverlay).hide().fadeIn(500);
+            closeModalOnClick();
+
+
+        },
+        error: function (e) {
+            //console.log(e);
+        }
+    })
+    //emailOverlay.find("#owl-demo").append("<img src='/resource/img/variation/pop01.jpg'/>");
+    //emailOverlay.find("#owl-demo").append("<img src='/resource/img/variation/pop02.jpg'/>");
+    //alert($("h2.detail-model").eq(0).text());
+
+
+});
+
+//CLOSE MODAL
+function closeModalOnClick() {
+    $(".modal-overlay .close_white,.modal-overlay .close_white, .close, .modal-overlay .black").on("click", function (e) {//close
+        e.preventDefault();
+        $('.modal-overlay').fadeOut(500);
+        setTimeout(function () {
+            $('.modal-overlay').remove();
+        }, 500);
+    });
+}
+
+// sizing home marquee
+
+var windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+var windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+
+if (windowHeight < 250) {
+    windowHeight = windowHeight * 1.5;
+}
+
+
+sizeSegment();
+$(window).on("resize", function () {
+    sizeSegment();
+});
+
+function sizeSegment() {
+    windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+    windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+
+    // alert(windowHeight);
+
+    if (windowHeight < 250) {
+        windowHeight = windowHeight * 1.5;
+    }
+
+    $(".main-img-bg,#story-marquee,.fullSegment,#modal").css({
+        'height': windowHeight + "px",
+        'width': windowWidth + "px"
+    });
+
+    $(".main-img img").css({
+        'height': windowHeight + "px",
+        'marginLeft': "-" + (windowWidth / 2) + "px"
+    });
+
+    $(".halfSegment").css({
+        'height': (windowHeight / 2) + "px",
+        'width': windowWidth + "px"
+    });
+
+    //for s-series section5
+    var numHighlight = $('#section-highlights .one-highlight').length;
+    $("#section-highlights.fullSegment").css({
+        'height': (windowHeight * numHighlight) + "px",
+        'width': windowWidth + "px"
+    });
+    $("#section-highlights .one-highlight").css({
+        'height': (windowHeight) + "px"
+    });
+
+    //bg position fixed and cover s-series highlights
+
+    $(window).scroll(function () {
+        var scrolledY = $(window).scrollTop();
+        if ($('.color-bg').length > 1) {
+            var topDiv = $("#section-highlights .one-highlight").offset().top;
+        }
+        $('#section-highlights .color-bg').css('background-position', 'center ' + ((scrolledY - topDiv)) + 'px');
+    });
+}
+
+
+$('.more-link').on("click", function (e) {
+
+    var $relText = $(this).parent().find('.content-hidden');
+    if ($relText.length) {
+        if ($relText.hasClass('.content-active')) {
+            $relText.slideUp(500);
+            $relText.removeClass('.content-active');
+            $(this).html("More +");
+        } else {
+
+            $relText.slideDown(500);
+            $relText.addClass('.content-active');
+            $(this).html("Less —");
+        }
+    }
+    e.preventDefault();
+})
+
+// Have we reached the bottom of the page?
+$(window).scroll(function () {
+    path = window.location.pathname;
+    url = path.split('/');
+    if (url.length > 0) {
+        if (url[1] == 'happenings') {
+            if (url[2] == null || url[2] == '') {
+                return false;
+            } else {
+                sec = url[2];
+            }
+            happeings = ['events', 'news', 'videos'];
+            if (happeings.indexOf(sec) == -1) {
+                return false;
+            }
+
+
+            // alert(sec);
+            // check the offset of the footer from top of the page.
+            var $reachBottom = $('footer').offset().top;
+
+            // When have we scrolled to the footer?
+            if ($(window).scrollTop() + $(window).height() >= $reachBottom) {
+
+
+
+
+                // Ajax call
+                $.ajax({
+
+                    url: "/index.php/ajax/loadPartial",
+                    data:{
+                    	sec:sec,
+                    	ajax:$('#ajax').text()
+                    },
+                    method:'POST'
+                    
+                }).success(function (html) {
+
+
+                    $('.article-col').append(html);
+
+                });
+            }
+        }
+    }
+});
+
+// Let's grab the URL parameter and work with it.
+
+function getUrlParameters(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+}
+
+function getUrlParameter(sParam) {
+    var path = window.location.pathname;
+    var url = path.split('/');
+    if (url.length > 0) {
+        if (url[1] == 'watches') {
+            if (url[2] == null || url[2] == '') {
+                sec = 'allmen'
+            } else {
+                sec = url[2].toLowerCase();
+                // sec = sec.replace(/_/g, ' ');
+            }
+            if (sec == 'g-shock_s_series') {
+                return (sParam == 'gender') ? 'women' : sec;
+            }
+            else
+            {
+                return (sParam == 'gender') ? 'men' : sec;
+            }
+        }
+    }
+}
+
+
+
+// are we on the single watch page ?
+if ($('.is-single-watches').length > 0) {
+
+    var gender = getUrlParameter('gender');
+    var watchCollection = getUrlParameter('watchFilter');
+
+
+    if (watchCollection == undefined) {
+        // reset this if no param exists
+        watchCollection = "allmen";
+    }
+
+    if (gender == undefined) {
+        // reset this if no param exists
+        gender = "men";
+    }
+
+    // Set Gender, in top right
+    var initGender = $("#" + gender);
+    $('.filter-nav').find(initGender).addClass('active');
+
+    if (gender == 'men') {
+        $('.womens-select').remove();
+    } else if (gender == 'women') {
+        $('.mens-select').remove();
+    }
+
+    var initColl = $("#" + watchCollection);
+    initColl.prependTo($('.initial-collection'));
+    if ($('.initial-collection .all').length > 0) {
+        $('.initial-collection .collection-close').remove();
+    }
+    if (sec == 'master_of_g') {
+        $('.initial-collection').addClass('group-collection').removeClass('initial-collection');
+    }
+}
+
+// Let's set the current collection Dropdown on page load
+
+// alert(gender + "," + watchCollection);
+
+// let's not click the current one
+$('.initial-collection .collection-select a').on("click", function (e) {
+    e.preventDefault();
+})
+$('.group-collection .collection-select .topLevel a').on("click", function (e) {
+    e.preventDefault();
+})
+
+// custom dropdown for watches
+$('.expand-dropdown').on("click", function (e) {
+
+    if ($('.select-dropdown').hasClass('open')) {
+        $('.select-dropdown').removeClass('open');
+        $(this).html("+");
+        $('.select-dropdown').slideUp();
+    } else {
+        $('.select-dropdown').addClass('open');
+        $(this).html("-");
+        $('.select-dropdown').slideDown();
+    }
+    e.preventDefault();
+})
+
+
+//MOBILE MENU
+//open mobile menu
+
+$('.is-mobile-menu').on("click", function (e) {
+    e.preventDefault();
+    toggleMenuMobile();
+});
+function toggleMenuMobile() {
+    var topPosition = $(window).scrollTop();
+    $('.mobile-menu').css('top', 50 - topPosition);
+    $('.mobile-menu').fadeToggle();
+    $('body').toggleClass("is-mobile-open");
+}
+
+$(".nav-mobile-second").addClass('closed');
+//open section menu
+$('.nav-single').on("click", function (e) {
+    var thisSecondNav = $(this).parent('ul').find('.nav-mobile-second');
+    $(".nav-mobile-second").not(thisSecondNav).each(function () {
+        $(this).stop().slideUp();
+        $(this).parents('ul').find('.nav-single span').text("+");
+        $(this).removeClass('open');
+        $(this).addClass('closed');
+    });
+
+    thisSecondNav.stop().slideToggle("slow");
+    if (thisSecondNav.hasClass('open')) {
+        thisSecondNav.removeClass('open');
+        thisSecondNav.addClass('closed');
+        $(this).parent('ul').find('.nav-single span').text("+");
+    } else {
+        thisSecondNav.removeClass('closed');
+        thisSecondNav.addClass('open');
+        $(this).parent('ul').find('.nav-single span').text("-");
+    }
+    e.preventDefault();
+});
+
+function countWatches() {
+    var count = $(".product-item").length;
+    return count;
+}
+
+function isElementBottom(elementToBeChecked) {
+    var TopView = $(window).scrollTop();
+    var BotView = TopView + $(window).height();
+    var TopElement = $(elementToBeChecked).offset().top;
+    var BotElement = TopElement + $(elementToBeChecked).height();
+    return (BotElement <= BotView);
+}
+
+//searchResults();
+function searchResults() {
+    var parameters = location.search.substring(1);
+    if (parameters.length) {
+        var tableParameters = parameters.split("=");
+        searchResults = unescape(tableParameters[1]);
+        $("h1").append(' for: ' + searchResults);
+    }
+}
+
+/* Rearrage named to images for the team section in a mobile view */
+
+function rearrangeGrid() {
+    var teamCheck = $('.team-grid');
+
+    if (teamCheck.length > 0) {
+        $('.img-part').each(function (index) {
+            //console.log(index);
+            var moveTo = $(this).parent();
+            $(this).detach().appendTo(moveTo);
+        });
+    }
+}
+function rearrangeGridHome() {
+    var teamCheck = $('.home-grid');
+
+    if (teamCheck.length > 0) {
+        $('.img-item').each(function (index) {
+            //console.log(index);
+            var moveTo = $(this).parent();
+            $(this).detach().appendTo(moveTo);
+        });
+    }
+}
+
+//rearrangeGrid();
+
+$(window).setBreakpoints({
+// use only largest available vs use all available
+    distinct: true,
+// array of widths in pixels where breakpoints
+// should be triggered
+    breakpoints: [
+        320,
+        480,
+        640,
+        768,
+        1024
+    ]
+});
+
+$(window).bind('enterBreakpoint320', function () {
+    //console.log("enterBreakpoint320");
+    rearrangeGrid();
+    rearrangeGridHome();
+});
+
+$(window).bind('exitBreakpoint320', function () {
+    //console.log("exitBreakpoint320");
+});
+
+$(window).bind('enterBreakpoint640', function () {
+    // console.log("enterBreakpoint320");
+    rearrangeGrid();
+    rearrangeGridHome();
+});
+
+$(window).bind('exitBreakpoint640', function () {
+    //console.log("exitBreakpoint320");
+});
+
+$(window).bind('enterBreakpoint768', function () {
+    //console.log("enterBreakpoint768");
+    //close menu
+    if ($('body').hasClass("is-mobile-open")) {
+        toggleMenuMobile();
+        $('.grouping.collapse h4:contains(Collection)').trigger('click');
+    }
+});
+
+$(window).bind('exitBreakpoint768', function () {
+    // console.log("exitBreakpoint768");
+    closeMenuSearch();
+});
+
+$(window).bind('enterBreakpoint1024', function () {
+    //console.log("enterBreakpoint1024")
+});
+
+$(window).bind('exitBreakpoint1024', function () {
+    //console.log("exitBreakpoint1024")
+});
+
+/****  S-SERIES ****/
+
+//SNAP EFFECT
+var windowH = $(window).height();
+var heightForSnap = 200;
+if (windowH < 700) {
+    heightForSnap = 50;
+}
+setTimeout(function () {//setTimeOut is for reloding page when not at the top
+    fadInUpContentBegin(".doSnapEffect");//page WORK
+    //fadInUpContentBegin(".mainContent section");//page Story
+}, 0);
+
+$(window).scroll(function () {//effect snap scroll
+    fadInUpContent(".doSnapEffect", heightForSnap);
+    //fadInUpContent(".mainContent section", 200);
+});
+
+function fadInUpContentBegin(elementToBeChecked) {//BEFORE ANY SCROLL FUNCTION
+    var numWorkContainer = 1;
+    $(elementToBeChecked).each(function () {
+        isOnView = isElementVisible(this, heightForSnap);
+        if (isOnView) {
+            $(this).addClass('delay-' + numWorkContainer);
+            $(this).addClass('animated0-5s snapEffect');
+            numWorkContainer += 2;
+            if (numWorkContainer >= 11) {
+                numWorkContainer = 1
+            }
+        }
+    });
+}
+function fadInUpContent(elementToBeChecked, topBegin) {//SCROLL FONCTION
+    $(elementToBeChecked).each(function () {
+        isOnView = isElementVisible(this, topBegin);
+        if (isOnView) {
+            $(this).addClass('animated0-5s snapEffect');
+        }
+    });
+}
+function isElementVisible(elementToBeChecked, topBegin) {
+    var TopView = $(window).scrollTop();
+    var BotView = TopView + $(window).height();
+    var TopElement = $(elementToBeChecked).offset().top;
+    var BotElement = TopElement + $(elementToBeChecked).height();
+    //alert(TopElement+'/'+BotView);
+    //return ((BotElement <= BotView) && (TopElement >= TopView));
+    //alert(TopElement)
+    return (TopElement <= BotView - topBegin);
+
+}
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+    });
+    return vars;
+}

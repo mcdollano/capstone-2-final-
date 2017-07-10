@@ -1,0 +1,112 @@
+//var controller = new ScrollMagic.Controller();
+
+// // build scene
+// var scene = new ScrollMagic.Scene({triggerElement: "#bg-piramide", duration: "100%"})
+//                 .setPin("#bg-piramide")
+//                 .addIndicators({name: "1 (duration: 300)"}) // add indicators (requires plugin)
+//                 .addTo(controller);
+
+// // build scene
+// var scene = new ScrollMagic.Scene({triggerElement: "#brand-story",duration: "100%"})
+//                 .setPin("#brand-story")
+//                 .addIndicators({name: "2 (duration: 10)"}) // add indicators (requires plugin)
+//                 .addTo(controller);
+
+
+
+
+
+	/*// build tween
+	var wider = TweenMax.to("#girl3-picture", 1, {width: "+=400px"});
+
+	// build scene and set duration to window height
+	var scene = new ScrollMagic.Scene({triggerElement: "#start-girls3-anim", duration: "100%"})
+					.setTween(wider)
+					.addIndicators() // add indicators (requires plugin)
+					.addTo(controller);*/
+
+
+
+
+var controller = new ScrollMagic.Controller();
+
+
+
+
+// build scene for opacity of text
+var disappearFashion = TweenMax.to("#fashion-fortified", 1, {opacity: "0"});
+var scene = new ScrollMagic.Scene({triggerElement: "#start-disappear-fashion", duration: '0%', loglevel: 3})
+	.setTween(disappearFashion)
+	.setPin("#start-girls3-anim")
+	//.addIndicators() // add indicators (requires plugin) (Remove it after test)
+	.addTo(controller);
+
+
+// build scene for animation girls (horizontaly)
+var enlargeGirl = TweenMax.to("#girl3-picture", 1, {width: "100%"});
+var scene = new ScrollMagic.Scene({triggerElement: "#start-girls3-anim", duration: '100%', loglevel: 3})
+	.setTween(enlargeGirl)
+	.setPin("#bg-piramide-content")
+	//.addIndicators() // add indicators (requires plugin) (Remove it after test)
+	.addTo(controller);
+
+// build scene for opacity fashion week
+var appearFashion = TweenMax.to("#fashion-week, #view-gallery", 1, {opacity: "1"});
+var scene = new ScrollMagic.Scene({triggerElement: "#start-appear-fashion", duration: '0%'})
+	.setTween(appearFashion)
+	//.addIndicators() // add indicators (requires plugin) (Remove it after test)
+	.addTo(controller);
+
+
+
+
+// build scene for opacity colors
+var appearWatchColors1 = TweenMax.to("#story-anim-fade-1", 2, {opacity: "1"});
+var scene = new ScrollMagic.Scene({triggerElement: "#story-anim-fade-1", duration: '0%'})
+	.setTween(appearWatchColors1)
+	//.addIndicators() // add indicators (requires plugin) (Remove it after test)
+	.addTo(controller);
+
+
+
+var appearWatchColors2 = TweenMax.to("#story-anim-fade-2", 2, {opacity: "1"});
+var scene = new ScrollMagic.Scene({triggerElement: "#story-anim-fade-2", duration: '0%'})
+	.setTween(appearWatchColors2)
+	//.addIndicators() // add indicators (requires plugin) (Remove it after test)
+	.addTo(controller);
+
+
+
+
+var appearWatchColors3 = TweenMax.to("#story-anim-fade-3", 2, {opacity: "1"});
+var scene = new ScrollMagic.Scene({triggerElement: "#story-anim-fade-3", duration: '0%'})
+	.setTween(appearWatchColors3)
+	//.addIndicators() // add indicators (requires plugin) (Remove it after test)
+	.addTo(controller);
+
+
+
+
+
+// build scene  (still have # girls fixed, but no width )
+/*var scene = new ScrollMagic.Scene({triggerElement: "#bg-piramide-2",duration: "50%"})
+    .setPin("#bg-piramide-content")
+    .addIndicators({name: "2 (duration: 10)"}) // add indicators (requires plugin)
+    .addTo(controller);*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
