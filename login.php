@@ -13,10 +13,10 @@
 			<form method="POST">
 				<div class="user_password_container">
 					<div class="form-group">
-						<input type="text" class="loginkey form-control" name="login_username" placeholder="Username">
+						<input type="text" class="loginkey form-control" name="login_username" placeholder="Username" required>
 					</div>
 					<div class="form-group">
-						<input type="password" class="loginkey login_password form-control" name="login_password" placeholder="Password">
+						<input type="password" class="loginkey login_password form-control" name="login_password" placeholder="Password" required>
 					</div>
 				</div>
 				<div class="forgot_password_container">
@@ -37,27 +37,27 @@
 			<h2>CREATE A NEW ACCOUNT</h2>
 			<form method="POST">
 				<div class="form-group">
-					<input type="text" class="registerkey form-control" name="register_firstname" placeholder="Firstname">
+					<input type="text" class="registerkey form-control" name="register_firstname" placeholder="Firstname" required>
 				</div>
 				<div class="form-group">
-					<input type="text" class="registerkey form-control" name="register_lastname" placeholder="Lastname">
+					<input type="text" class="registerkey form-control" name="register_lastname" placeholder="Lastname" required>
 				</div>
 				<div class="form-group">
-					<input type="text" class="registerkey form-control" name="register_email" placeholder="Email">
+					<input type="text" class="registerkey form-control" name="register_email" placeholder="Email" required>
 				</div>
 				<div class="form-group">
-					<input type="text" class="registerkey form-control" name="register_username" placeholder="Username">
+					<input type="text" class="registerkey form-control" name="register_username" placeholder="Username" required>
 				</div>
 				<div class="form-group">
-					<input type="password" class="registerkey form-control" name="register_password" placeholder="Password">
+					<input type="password" class="registerkey form-control" name="register_password" placeholder="Password" required>
 				</div>
 				<div class="form-group">
-					<input type="password" class="registerkey form-control" name="confirm_password" placeholder="Confirm Password">
+					<input type="password" class="registerkey form-control" name="confirm_password" placeholder="Confirm Password" required>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary login-btn form-control" name="register" value="Register">
+					<input type="submit" class="btn btn-primary login-btn form-control" name="register" value="Register" required>
 				<a href="index.php">
-					<input type="button" href = "index.php" class="btn btn-default login-btn form-control" name="cancel" value="Cancel">
+					<input type="button" href = "index.php" class="btn btn-default login-btn form-control" name="cancel" value="Cancel" required>
 				</a>
 				</div>
 			</form>

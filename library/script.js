@@ -7,7 +7,7 @@
 		document.getElementById("navbtn").style.visibility = "hidden";
 		document.getElementById("body").style.marginLeft = "200px";
 		document.getElementById("login").style.visibility = "hidden";
-		document.getElementById("add_new").style.visibility = "hidden";
+		// document.getElementById("add_new").style.visibility = "hidden";
 		document.getElementById("logout").style.visibility = "hidden";
 	}
 	function closeNav() {
@@ -30,18 +30,15 @@
 		document.getElementById("navbtn").style.visibility = "hidden";
 		document.getElementById("body").style.marginRight = "420px";
 		document.getElementById("login").style.visibility = "hidden";
-		document.getElementById("add_new").style.visibility = "hidden";
 		document.getElementById("logout").style.visibility = "hidden";
 	}
 
 		function closeNav2() {
-		// document.getElementById("displayname").style.marginLeft = "15%";
 		document.getElementById("mySidenav2").style.width = "0";
 		document.getElementById("navbtn").style.visibility = "visible";
 		document.getElementById("body").style.marginRight = "0";
 		document.getElementById("login").style.visibility = "visible";
 		document.getElementById("add_new").style.visibility = "visible";
-		// document.getElementById("login").style.visibility = "visible";
 		document.getElementById("logout").style.visibility = "visible";		
 	}
 
@@ -55,7 +52,6 @@
 		document.getElementById('mySidenav2').style.width = "100vw";
 		document.getElementById("navbtn").style.visibility = "hidden";
 		document.getElementById("body").style.marginRight = "100vw";
-
 	}
 		// -------------- END OF CHECK OUT  -------------//
 
@@ -108,12 +104,40 @@ $(document).ready(function(){
 	});
 });
 
+/***** CHECK OUT CONTAINER ********/
+
+	$('#checkout').click(function(){
+		$('.checkout_info_container').show();
+		// $('#mySidenav2').css('padding-left', '5px');
+	});
+
+	$('.closebtn2').click(function(){
+		$('.checkout_info_container').hide();
+		$('#cart_icon').show();
+
+	});
+
+	$('.closebtn2').mouseenter(function(){
+		$('.closebtn2').html('CLOSE CART');
+	});
+
+	$('.closebtn2').mouseleave(function(){
+		$('.closebtn2').html('YOUR CART');
+	});
+
+	$('#cart_icon').click(function(){
+		$('#cart_icon').hide();
+	});
+
+
+
 	function getSubtotal(){
 		var price = document.getElementById("item_price_js").innerHTML;
 		var quantity = document.getElementById("item_quantity_js").value;
 		var getSub = document.getElementById("getSub");	
 		getSub.value = parseInt(quantity) * parseInt(price);	
 	}
+
 
 </script>
 

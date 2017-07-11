@@ -1,12 +1,15 @@
+<div class="right_nav_main_container">		
 	<?php 
 		require_once 'library/script.php';
 	?>	
-	<div style="max-width: 150px;">
-		<span>YOUR CART<a href="javascript:void(0)" class="closebtn2" onclick="closeNav2()">
-			&times;</a>
-		</span>
-	</div>
-<div>	
+	<!-- <div style="max-width: 150px;"> -->
+		<a href="javascript:void(0)" class="closebtn2" onclick="closeNav2()">
+			<span style="color: white;">YOUR CART</span>
+		</a>
+		
+
+	<!-- </div> -->
+
 	<div class="cartitem_checkout_container">
 		<div class="check_out_phpcontainer">
 				<?php
@@ -25,10 +28,9 @@
 							$quantity = $_SESSION['cart'][$item_id];
 							$subtotal = $quantity * $item_price;
 							echo " 
-								
 									<div class='cart_container'>
-										<form method='POST'>
-											<div class = 'row'>
+										<form method='POST' action='display_items.php?id=$key'>
+											<div class = 'row cart_item_container'>
 												<div class='cart_left col-sm-4 col-md-4'>
 													<div class='cart_image_container'>
 														<img src='$item_image'>
@@ -46,7 +48,10 @@
 													<div class='cart_subtotal_container'>
 														Subtotal : $subtotal
 													</div>	
-												</div>	
+													
+													<input type='submit' class='remove_item_button' name='remove_item' value='Remove Item'>
+
+												</div>
 											</div>	
 										</form>
 									</div>
@@ -56,10 +61,16 @@
 						$grandtotal += $quantity * $item_price;
 					}
 
-					echo "<div style = 'margin-left:10px; max-width:450px;'>GRAND TOTAL : " . $grandtotal . "<br><br></div>"; 
-					
+					if (isset($_POST['remove_item'])) {
+						$key = $_GET['id'];
+						unset($_SESSION['cart'][$key]);
+						echo "<script>alert('Item Removed')</script>";
+						echo "<script>window.location='items.php'</script>";
+					}
+			
 					if (isset($_POST['cancel_shopping'])) {
 						unset($_SESSION['cart']);
+						header('location:items.php');
 					
 					}
 
@@ -87,92 +98,61 @@
 
 								mysqli_query($conn, $sql3);
 
-								$sql3 = "INSERT INTO order_details (order_quantity, item_price, sub_total) VALUES ('$order_quantity', '$item_price', '$subtotal')";
+								$sql3 = "INSERT INTO order_details (item_id, order_id, order_quantity, item_price, sub_total) VALUES ('$product_key', '$order_id', '$order_quantity', '$item_price', '$subtotal')";
 
 								mysqli_query($conn, $sql3);
-
+								var_dump($sql3);
 								unset($_SESSION['cart']);
+								echo "<script>
+										alert('Order Complete!');
+										window.location.replace('items.php');
+										</script>
+									 ";
 							}
 						}
 					}
 
-					// var_dump($_SESSION);
-
-
-			
-				// foreach ($_SESSION['cart'] as $key => $value) {
-				// 	if (isset($_POST['check_out'])) {  	
-				// 		$product_key = $key;
-				// 		$order_quantity = $value;
-				// 		$user_id = $_SESSION['user_id'];
-
-
-				// 		$sql2 = "SELECT items FROM items WHERE item_id = $product_key";
-				// 		$result2 = mysqli_query($conn,$sql);
-				// 			if (mysqli_num_rows($result2)>0) {
-				// 				while ($row2 = mysqli_fetch_assoc($result2)) {
-				// 					extract($row2);
-
-				// 			  	}
-				// 			}
-
-				// 		if (($product_key !='')) 
-
-				// 			{
-				// 				if ($order_quantity != 0) {
-				// 					$sql3 = "INSERT INTO orders (item_id, order_quantity)
-				// 						VALUES ('$product_key','$order_quantity')";
-
-				// 						$result3 = mysqli_query($conn,$sql3);
-										
-				// 						// echo "Purchase complete!";
-				// 						unset($_SESSION['cart']);
-				// 				}
-				// 			}	
-				// 	}
-				// }
-
 				?>
 		</div>
-			<div class="checkout_info_container">
-				<h4>CHECK OUT</h4>
+			<div class="checkout_info_container panel">
+				<h4>CUSTOMER INFORMATION SHEET</h4>
 				<form method="POST">
 					<div class="form-group">
-						<input type="text" class="checkout_key form-control" name="guest_firstname" placeholder="Firstname">
+						<input type="text" class="checkout_key form-control" name="guest_firstname" placeholder="Firstname" required>
 					</div>
 					<div class="form-group">
-						<input type="text" class="checkout_key form-control" name="guest_lastname" placeholder="Lastname">
+						<input type="text" class="checkout_key form-control" name="guest_lastname" placeholder="Lastname" required>
 					</div>
 					<div class="form-group">
-						<input type="text" class="checkout_key form-control" name="guest_email" placeholder="Email address">
+						<input type="text" class="checkout_key form-control" name="guest_email" placeholder="Email address" required>
 					</div>
 					<div class="form-group">
-						<input type="text" class="checkout_key form-control" name="guest_number" placeholder="Mobile Numbner">
+						<input type="text" class="checkout_key form-control" name="guest_number" placeholder="Mobile Numbner" required>
 					</div>
 					<div class="form-group">
-						<input type="text" class="checkout_key form-control" name="guest_address" placeholder="Shipping Address">
+						<input type="text" class="checkout_key form-control" name="guest_address" placeholder="Shipping Address" required>
 					</div>
 					<div class="form-group">
-						<input type="text" class="checkout_key form-control" name="guest_date_ordered" placeholder="Date Ordered">
+						<input type="text" class="checkout_key form-control" name="guest_date_ordered" placeholder="Date Ordered" required>
 					</div>
-					<input type="submit" name="check_out_final_btn" value="Check Out">
+					<input type='submit' id='check_out_button' name='remove_item' value='Submit'>
 				</form>
 			</div>
-			<hr>
 	</div>		
-		<div class="check_out_btn_container">
-			<form method="POST">
-				<input type="submit" name="cancel_shopping" value="Cancel Shopping"		
-			</form><br>
 
-			<form method="POST">
-				<input type="button" onclick="open_check_out()" id="checkout" name="checkout" value="Open Check Out">
+		<div class = 'grandtotal_checkout'>
+			<h1>GRAND TOTAL : <?php echo $grandtotal; ?> </h1> 
+			<form method='POST'>
+				<input type='button' onclick='open_check_out()' id='checkout' name='checkout' value='Check Out'>
 			</form>
 
-			<form method="POST">
-				<input type="submit" name="check_out" value="Check Out">
-			</form>
+			<div class="row cancel_shopping_container">
+				<div class="col-md-5 col-lg-5">
+					<form method="POST">
+						<input type="submit" class="check_out_btn" name="cancel_shopping" value="Cancel Shopping" >		
+					</form>
+				</div>		
+			</div>
 		</div>
-
 </div>
 	

@@ -23,6 +23,8 @@
 		$_SESSION['delete_message'] = "Item Deleted Successfully!";
 		
 	}
+
+	
 ?>	
  
 	<div class="row">

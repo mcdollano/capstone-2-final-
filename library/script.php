@@ -41,7 +41,7 @@
 					header('location:index.php');	
 				}
 			} else {
-				echo "Username and Password don't match.";
+				echo "Username and Password didn't match.";
 			}
 		}
 
@@ -89,7 +89,7 @@
 		 	echo "<p class='error_msg'>Error! Fill in the blank fields! </p>";
 
 		 }
-	}
+	}  
 
 	if (isset($_POST['cancel_add'])) {
 		header('location:items.php');
