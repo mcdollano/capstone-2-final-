@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2017 at 10:41 AM
+-- Generation Time: Jul 12, 2017 at 10:48 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.2
 
@@ -53,7 +53,27 @@ INSERT INTO `guest_customers` (`guest_id`, `guest_firstname`, `guest_lastname`, 
 (11, 'ajsdhkjadhskjahs', 'asjhdaksjhdasd', 12456789, 'ajsdhjkahds', 'quezon city'),
 (12, 'mark', 'dollano', 1231321, 'jashdkjahdas', 'quezon city'),
 (13, 'jhjkhsdkf', 'ajksdhkajshda', 12312312, 'akjhdkajsa', 'asjkdhaskjdh'),
-(14, '', '', 0, '', '');
+(14, '', '', 0, '', ''),
+(15, 'mark', 'askdlasd', 123454566, 'aslkdlaskd', 'quezon city'),
+(16, 'mark', 'dollano', 1234564789, 'asldklasd', 'naga city'),
+(17, 'ppppppppppp', 'pppppppppppppp', 12345789, 'pppppppppppppp', 'quezon city'),
+(18, 'dora', 'dora', 123456798, 'dora', 'quezon city'),
+(19, 'ppppppppppppppppppppppppppppppppppppp', 'ppppppppppppppppppppppppppppppppppppp', 123456789, 'asdapsodaosd', 'quezon city'),
+(20, 'ppppppppppppppppppppppppppppppppppppp', 'ppppppppppppppppppppppppppppppppppppp', 123456789, 'asdapsodaosd', 'quezon city'),
+(21, 'hasdhasdkjhasd', 'askjhdkajhdskjadhs', 123456789, 'asjhdakjshdaksjh', 'quezon city'),
+(22, 'hasdhasdkjhasd', 'askjhdkajhdskjadhs', 123456789, 'asjhdakjshdaksjh', 'quezon city'),
+(23, 'hagshdasdghj', 'ashgdjghasd', 123123123, 'ahsgdashgd', 'quezon city'),
+(24, '12', '12', 12, '12', '12'),
+(25, '123', '123', 1231231231, '123', '123'),
+(26, '123', '123', 123123123, '123', '123'),
+(27, '123', '132', 123456789, '123', '123'),
+(28, 'pj', 'pj', 0, 'pj', 'pj'),
+(29, 'pj', 'pj', 0, 'pj', 'pj'),
+(30, 'asdf', 'asdf', 0, 'asdf', 'asdf'),
+(31, '', '', 0, '', ''),
+(32, '', '', 0, '', ''),
+(33, '', '', 0, '', ''),
+(34, '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -136,7 +156,27 @@ INSERT INTO `orders` (`order_id`, `user_id`, `guest_id`, `order_date`, `required
 (43, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 6000),
 (44, NULL, NULL, '2017-12-24', NULL, NULL, NULL, 'quezon city', 10500),
 (45, NULL, NULL, '0000-00-00', NULL, NULL, NULL, 'asjkdhaskjdh', 7000),
-(46, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 14000);
+(46, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 14000),
+(47, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 16000),
+(48, NULL, NULL, '0000-00-00', NULL, NULL, NULL, 'naga city', 24000),
+(49, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 56000),
+(50, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 6000),
+(51, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 16500),
+(52, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 16500),
+(53, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 16500),
+(54, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 16500),
+(55, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'quezon city', 16500),
+(56, NULL, NULL, '2017-12-25', NULL, NULL, NULL, '12', 16500),
+(57, NULL, NULL, '2017-12-25', NULL, NULL, NULL, '123', 7000),
+(58, NULL, NULL, '2017-12-25', NULL, NULL, NULL, '123', 17500),
+(59, NULL, NULL, '2017-12-25', NULL, NULL, NULL, '123', 21000),
+(60, NULL, NULL, '0000-00-00', NULL, NULL, NULL, 'pj', 21000),
+(61, NULL, NULL, '0000-00-00', NULL, NULL, NULL, 'pj', 21000),
+(62, NULL, NULL, '0000-00-00', NULL, NULL, NULL, 'asdf', 21000),
+(63, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 20500),
+(64, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 20500),
+(65, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 20500),
+(66, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 31500);
 
 -- --------------------------------------------------------
 
@@ -163,7 +203,13 @@ INSERT INTO `order_details` (`order_details_id`, `order_id`, `item_id`, `order_q
 (7, 42, 30, 1, 3000, 3000),
 (8, 43, 30, 2, 3000, 6000),
 (9, 44, 29, 3, 3500, 10500),
-(10, 45, 29, 2, 3500, 7000);
+(10, 45, 29, 2, 3500, 7000),
+(19, 62, 29, 6, 3500, 21000),
+(20, 65, 29, 2, 4500, 13500),
+(21, 65, 28, 3, 4500, 13500),
+(22, 66, 29, 5, 2500, 5000),
+(23, 66, 28, 2, 2500, 5000),
+(24, 66, 31, 2, 2500, 5000);
 
 -- --------------------------------------------------------
 
@@ -245,7 +291,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `guest_customers`
 --
 ALTER TABLE `guest_customers`
-  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `items`
 --
@@ -255,12 +301,12 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `users`
 --
