@@ -21,28 +21,14 @@
 		mysqli_query($conn,$sql3);
 		header('location:items.php');
 		$_SESSION['delete_message'] = "Item Deleted Successfully!";
-		
 	}
-
 	
 ?>	
- 
 	<div class="row">
 		<div class="col-sm-6 col-md-6 col-lg-6">
 			<img id='item_pic' src= <?php echo $item_image;?>>
 		</div>
-		<div class="col-sm-6 col-md-6 col-lg-6 delete_item_container">
-			<label>
-				<p>Are you sure you want to delete this item?
-				</p>
-			</label>
-			<form method="POST">
-				<input type='submit' id ='delete_item_btn' class='btn btn-danger delete_item_btn' name="delete_item_btn" value='Delete'>
-				<a href ="items.php">
-					<input class="btn btn-default cancel_btn" type="button" name="cancel" value="Cancel">
-				</a>
-			</form>
-					<br>	
+		<div class="col-sm-6 col-md-6 col-lg-6 delete_item_container">	
 			<form method="POST">	
 				<div class="name_price_container">
 					<div class="display_item_name hide_item" id="item_hide">
@@ -62,8 +48,19 @@
 						   	<?php echo $item_description;?>
 						</div>
 					</div>
-				</div>										
+				</div>								
 			</form>	
+			<div>
+				<p>
+					Are you sure you want to delete this item?
+				</p>
+				<form method="POST">
+					<input type='submit' id ='delete_item_btn' class='btn btn-danger delete_item_btn' name="delete_item_btn" value='Delete'>
+					<a href ="items.php">
+						<input class="btn btn-default cancel_btn" type="button" name="cancel" value="Cancel">
+					</a>
+				</form>
+			</div>	
 		</div> <!--column-->
 	</div> <!--row-->
 <?php

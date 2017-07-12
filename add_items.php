@@ -5,23 +5,23 @@ function get_title(){
 }
 
 function display_content(){ ?>
-	<div class="add-item-container">
-		<form method="POST">
-			<h2>Add New Item</h2>
+	<div class="add-item-container panel">
+		<h2>Add New Item</h2>
+		<form method="POST">	
 			<div class="form-group">
-				<label for="item_name"><h4>Name:<h4></label>
-				<input type="name" class="form-control" name="item_name" id="item_name">
+				<label for="item_name"><h4>Name :<h4></label>
+				<input type="name" class="form-control" name="item_name" id="item_name" required>
+			</div>
+			<div class="form-group">	
+				<label for="item_description"><h4>Description :<h4></label>
+				<input type="textarea" class="form-control" name="item_description" id="item_description" required>
 			</div>
 			<div class="form-group">
-				<label for="item_description"><h4>Description:<h4></label>
-				<input type="textarea" class="form-control" name="item_description" id="item_description">
+				<label for="item_price"><h4>Price :<h4></label>
+					<input type="textarea" class="form-control" name="item_price" id="item_description" required>
 			</div>
 			<div class="form-group">
-				<label for="item_price"><h4>Price:<h4></label>
-					<input type="textarea" class="form-control" name="item_price" id="item_description">
-			</div>
-			<div class="form-group">
-				<label for="item_category"><h5>Category:<h5></label>
+				<label for="item_category"><h4>Category :<h4></label>
 				<select class="form-control" name="item_category">
 					<option>Shoes</option>
 					<option>Bags</option>
@@ -29,11 +29,11 @@ function display_content(){ ?>
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="item_category"><h5>Quantity:<h5></label>
-				<input type="textarea" class="form-control" name="item_quantity" id="item_description">
+				<label for="item_category"><h4>Quantity :<h4></label>
+				<input type="textarea" class="form-control" name="item_quantity" id="item_description" required>
 			</div>
 			<div class="form-group">
-				<label for="item_category"><h4>Brand:<h4></label>
+				<label for="item_category"><h4>Brand :<h4></label>
 				<select class="form-control" name="item_brand">
 					<option>Coach</option>
 					<option>G Shock</option>
@@ -44,11 +44,11 @@ function display_content(){ ?>
 					<option>Tory Burch</option>
 				</select>
 			</div>
-			<div class="form-group">
-				<label for="item_image"><h4>Upload Image:<h4></label>
-				<input type="file" name="item_image">
+			<div class="form-group upload_image_container">
+				<label for="item_image"><h4>Upload Image :<h4></label>
+				<input type="file" name="item_image" required>
 			</div>
-			<input type="submit" name="add_new" class="btn btn-primary" value="Add Items">
+			<input type="submit" name="add_new" class="btn btn-primary add_item_btn" value="Add Items">
 			<input type="submit" name="cancel_add" class="btn btn-default" value="Cancel">
 		</form>		
 	</div>

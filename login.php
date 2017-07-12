@@ -23,7 +23,7 @@
 					<span>Forgot your Password?</span> <a href="#">Click here</a><br>
 				</div>
 				<div class="form-group login-btn-container">
-					<input type="submit" class="btn btn-primary login-btn form-control" name="login" value="Log In">
+					<input type="submit" class="btn btn-primary login-btn form-control" name="login" value="Log In" id="login_button">
 					<a href="index.php">
 						<input type="button" class="btn btn-default login-btn form-control" name="cancel" value="Cancel">
 					</a>
@@ -55,7 +55,7 @@
 					<input type="password" class="registerkey form-control" name="confirm_password" placeholder="Confirm Password" required>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary login-btn form-control" name="register" value="Register" required>
+					<input type="submit" class="btn btn-primary login-btn form-control" name="register" value="Register" id="register_button" required>
 				<a href="index.php">
 					<input type="button" href = "index.php" class="btn btn-default login-btn form-control" name="cancel" value="Cancel" required>
 				</a>

@@ -31,7 +31,9 @@ function display_content() {
 						<span class="disp_name"><?php echo $item_name;?></span>
 					</div> 
 					<div class="display_item_price hide_item" id="item_hide">	
-						<span class="disp_price">Php <?php echo $item_price;?></span>	
+						<p class="disp_price">
+							Php <?php echo $item_price;?>	
+						</p>	
 					</div> 
 				</div>
 
@@ -59,8 +61,12 @@ function display_content() {
 						<a href='items.php'>
 							<input type='button' class='btn btn-default cancel-btn' name='cancel' value='Back To Catalog'>
 						</a>
-							<a href = 'delete_items.php?id=$id'>	
+						<a href = 'delete_items.php?id=$id'>	
 							<input type='button' class='btn btn-default delete-btn' name='deleteBtn' value='Delete Product'>
+						</a>
+
+						<input type='button' onclick='showcart()' id='showcartBtn' class='btn btn-default' name='show_cart' value='Buy Now'>	
+
 	
 						";
 						
@@ -93,14 +99,23 @@ function display_content() {
 				?>
 
 				<div id="addtocart_container" class="addtocart">
-					<form method = "POST" action="addtocart.php?id=<?php echo $id; ?>">			
-						<span>Quantity :</span>
-						  <input type="number" onchange="getSubtotal()" id="item_quantity_js" name="quantity" min="1" max= <?php echo $item_quantity;?>> 
-						<br>
-						<span>Subtotal : </span><input type="text" id="getSub" name="subtotal">  
-						<br>
-						<input type="submit" onclick="openNav2()" name="cartBtn" value="Add to cart" class="add_to_cart">
-						<input type='button' onclick='hidecart()' id='cancelcartBtn' class='btn btn-default' name='cancel_cart' value='Cancel'>	
+					<form method = "POST" action="addtocart.php?id=<?php echo $id; ?>">		
+
+						<div class="quantity_container">
+							<span>Quantity :</span>
+							  <input type="number" onchange="getSubtotal()" id="item_quantity_js" name="quantity" min="1" max= <?php echo $item_quantity;?>>
+						</div>
+
+						<div class="subtotal_container">   
+							<span>Subtotal : </span><input type="text" id="getSub" name="subtotal">  
+							<br>
+
+							<input type="submit" onclick="openNav2()" name="cartBtn" value="Add to cart" class="add_to_cart">
+
+							<input type='button' onclick='hidecart()' id='cancelcartBtn' class='btn btn-default' name='cancel_cart' value='Cancel'>	
+
+						</div>	
+
 					</form>
 				</div>
 

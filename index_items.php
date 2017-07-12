@@ -86,7 +86,7 @@
 										<div class = 'middle'>	
 										</div>
 										<p>$item_name</p>
-										<p>Php $item_price</p>
+										<p id='thumbnail_price'>Php $item_price</p>
 									</div> 
 								</a>
 						 	 </div>";//column

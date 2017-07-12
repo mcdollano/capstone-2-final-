@@ -16,26 +16,29 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(238, 239, 237);
+    background-color: rgb(59, 61, 57);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
     text-align: left;
 }
 
+
+
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: black;
+    color: white;
     display: block;
     transition: 0.3s;
     margin-left: 0;
+    text-transform: uppercase;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: white;
-    background-color: grey;
+    color: rgb(59, 61, 57);
+    background-color: rgb(68, 240, 145); 
 }
 
 .sidenav .closebtn {
@@ -87,7 +90,16 @@ body {
 
 #login {
     margin-left: 37%;
+    color: rgb(59, 61, 57);  
 
+}
+
+#login:hover {
+    background-color: rgb(59, 61, 57);
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+    margin-right: 5px;
 }
 
 #logout {
@@ -95,55 +107,15 @@ body {
 
 }
 
+#sign_out_btn {
+    color: rgb(59, 61, 57);
+}
+
 #cart_icon {
     width: 23px;
 }
 
- /* Dropdown Button */
-.dropbtn {
-    background-color: white;
-    color: #3b5998;
-    padding: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-}
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: rgb(224, 224, 224);
-    color: black;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;} 
 
 /* ------------------ END OF NAVBAR ------------------ */
 
@@ -193,7 +165,7 @@ body {
 }
 
 .closebtn2 {
-    width: 200px;
+    width: 400px;
     font-size: 20px;
 }
 
@@ -227,13 +199,11 @@ body {
 
 .grandtotal_checkout {
     padding-left: 10px;
-    margin-top: 10%;
+    margin-top: 50px;
     text-align: left;
-    position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     margin-left: 50px;
     width: 300px;
-    /*border-top: 1px solid white;*/
 }
 
 .grandtotal_checkout > h1 {
@@ -252,10 +222,16 @@ body {
 
 .cart_item_container {
     margin-top: 10px;
+    padding-left: 30px;
+    margin-bottom: 10px;
 }
 
 .checkout_info_container > h4 {
     color: rgb(59, 61, 57);
+}
+
+.right_nav_main_container {
+    height: 100vh;
 }
 
 /* ------------------ INDEX ------------------ */
@@ -331,12 +307,6 @@ body {
     margin-top: 0;
 }
 
-/*#banner-image {
-    width: 50%;
-    height: 50%;
-    padding-left: 5%;
-}*/
-
 .banner-container2 {
     margin-left: 10%;
     margin-top: 0%;
@@ -359,40 +329,19 @@ body {
     text-decoration: underline;
 }
 
-
-.f-wrapper {
-    text-align: center;
+.container {
+    background-color: rgb(234, 234, 234);
+    width: 100vw;
+    z-index: 999;
+    padding-bottom: 15px;
 }
 
-#myCarousel {
-    /*width: 60%;*/
-    /*margin-left: 20%;*/
-    margin: auto;
-    width: 728px;
-    height: 320px;
-    display: inline-block;
-    text-align: center;
-}
-
-.carousel-inner img {
-    /*width: 100%;*/
-    margin: auto;
-    text-align: center;
-    padding: auto;
-    /*padding-top: 30%;*/
-}
-
-/*.item {
-    padding-top: 
-}
-*/
 /*---------------LOG IN --------------------*/
 .login-container {
     background-color: #f7f7f7;
     height: 320px;
     width: 500px;
     margin: auto;
-    /*padding: 20px 150px 20px 30px;*/
     border: 1px solid #D0D1CB;
 }
 
@@ -423,10 +372,12 @@ body {
 .login-btn {
     width: 100px;
     margin-top: 10px;
+    border: 1px solid rgb(211, 211, 211);
 }
 
 .register_container {
     height: 500px;
+    margin-bottom: 20px;
 }
 
 /* ---------------- LOG OUT ---------------*/
@@ -437,12 +388,10 @@ body {
 
 /* ---------------- ITEMS ------------------*/ 
 
-
-
 .thumbnail {
     width: 300px;
     font-size: 20px;
-    height: 400px;
+    height: 420px;
     text-align: center;
     margin-bottom: 20px;
     padding-top: 20px;
@@ -450,7 +399,7 @@ body {
 }
 
 .thumbnail p {
-    color: black;
+    color: rgb(59, 61, 57);
     text-decoration: none;
 }
 
@@ -474,10 +423,52 @@ body {
     margin-left: 5%;
 }
 
+/*----------------- INDEX ITEMS -----------------*/
+
+.item_button {
+    color: rgb(59, 61, 57);  
+}
+
+.item_button:hover {
+    background-color: rgb(59, 61, 57);
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+}
+
+#thumbnail_price {
+    background-color: rgb(59, 61, 57);
+    /*color: rgb(68, 240, 145);*/
+    color: white;
+    padding: 10px;
+    width: 120px;
+    margin: auto;
+}
+
+/*---------------- ADD TO CART -----------------*/
+
+.quantity_container {
+    margin-bottom: 5px;
+}
+
+
+
 /* ---------------- ADD  ITEMS ------------------*/ 
+
+.add_item_btn {
+    background-color: rgb(68, 240, 145); 
+    color:  rgb(59, 61, 57);
+    border: rgb(230, 230, 230); 
+
+}
 
 .catalog-row > div > img {
     width: 300px;
+}
+
+.upload_image_container {
+    width: 150px;
+    text-align: left;
 }
 
 .catalog_header {
@@ -485,19 +476,41 @@ body {
 }
 
 .catalog_header > span {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     margin-right: 5px;
 }
 
 #add_new {
     margin-left: 70%;
     transition: -1s;
+    background-color: rgb(68, 240, 145);
+    color: rgb(59, 61, 57);
+    border: 1px solid black;
 }
 
 .add-item-container {
     width: 500px;
     margin: auto;
+    text-align: center; 
+    margin-bottom: 50px;
+    border: 1px solid rgb(225, 225, 225);
+    padding-bottom: 30px;
+}
+
+.add-item-container h2, h4 {
+    text-transform: uppercase;
+    max-width: 200px;
+}
+
+.add-item-container h2 {
     text-align: center;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.add-item-container label {
+    max-width: 300px;
+    text-align: left;
 }
 
 .form-group h4 {
@@ -543,18 +556,28 @@ body {
   100% { background-position: right; }
 }
 
-#add_to_cart_btn {
-    /*background-color: red;*/
-}
-
 .myModal {
     display: none;
+}
+
+.item_name {
+    max-width: 300px;
 }
 
 /* ------ DISPLAY ITEMS ------- */
 
 .add_to_cart {
     margin-top: 10px;
+    background-color: rgb(68, 240, 145);
+    color: rgb(59, 61, 57);
+    padding: 5px;
+    width: 120px;
+    border: 1px solid rgb(59, 61, 57);
+}
+
+.add_to_cart:hover {
+    background-color: rgb(59, 61, 57);
+    color: rgb(68, 240, 145);
 }
 
 #addtocart_container {
@@ -581,6 +604,12 @@ body {
 
 .disp_price {
     font-size: 30px;
+    background-color: rgb(59, 61, 57);
+    color: white;
+    padding: 5px;
+    margin-top: 5px;
+    max-width: 150px;
+    text-align: center;
 }
 
 .item_price_container {
@@ -633,7 +662,7 @@ body {
 }
 
 .descript_text span {
-    color: #3b5998;
+    /*color: #3b5998;*/
 }
 
 .display_items_container {
@@ -690,6 +719,18 @@ button {
     text-align: left;
 }
 
+.display_item_name {
+    margin-bottom: 10px;    
+}
+
+/* ------------ ITEM FILTER -------------*/
+
+#search_btn {
+    color: rgb(59, 61, 57);
+    background-color: rgb(234, 234, 234); /*grey*/
+    border: 1px solid black; 
+}
+
 /* ------------ CART CONTAINER ------------ **/
 
 .cart_container {
@@ -731,7 +772,6 @@ button {
 .checkout_info_container {
     position: absolute;
     left: 60%;
-    top: 50%;
     transform: translate(-50%, -50%);
     display: none;
     text-align: center;
@@ -752,4 +792,48 @@ button {
     height: 400px;
 }
 
+/* --------------- FOOTER ---------------*/
 
+.f-wrapper {
+    text-align: center;
+    background-color: rgb(59, 61, 57);
+    height: 20%;
+    color: white;
+    font-size: 15px;
+    /*position: absolute;*/
+    bottom: 0;
+    
+}
+
+.last-row a {
+    color: rgb(68, 240, 145);
+}
+
+.footer-container {
+    padding-top: 50px;
+}
+
+.footer-wrapper {
+    padding-top: 30px;
+}
+
+#login_button, #register_button {
+    background-color: rgb(68, 240, 145);
+    color: rgb(59, 61, 57);
+    border: 1px solid rgb(211, 211, 211);
+}
+
+#login_button:hover {
+    background-color: rgb(59, 61, 57);
+    color: white;
+}
+
+#register_button:hover {
+    background-color: rgb(59, 61, 57);
+    color: white;
+}
+
+
+.forgot_password_container a {
+    color: rgb(68, 240, 145);
+}

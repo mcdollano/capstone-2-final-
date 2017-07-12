@@ -114,20 +114,35 @@ $(document).ready(function(){
 	$('.closebtn2').click(function(){
 		$('.checkout_info_container').hide();
 		$('#cart_icon').show();
+		$('#login_container').show();
+		$('#displayname').show();
 
 	});
 
 	$('.closebtn2').mouseenter(function(){
-		$('.closebtn2').html('CLOSE CART');
+		$('.closebtn2').html('CONTINUE SHOPPING');
 	});
 
 	$('.closebtn2').mouseleave(function(){
 		$('.closebtn2').html('YOUR CART');
+
 	});
 
 	$('#cart_icon').click(function(){
 		$('#cart_icon').hide();
+		$('#login_container').hide();
+		$('#displayname').hide();
 	});
+
+	$('#navbtn').click(function(){
+		$('#cart_icon').hide();
+	});
+
+	$('#nav_close_btn').click(function(){
+		$('#cart_icon').show();
+		$('#displayname').show();
+	});
+
 
 
 

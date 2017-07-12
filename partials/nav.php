@@ -5,7 +5,7 @@
 	?>	
 
 	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="nav_close_btn">
 			&times;
 		</a>
 		<a href="index.php">Home</a>
@@ -29,20 +29,16 @@
 
 		<?php
 			if(isset($_SESSION['firstname'])){ ?>
-			<?php echo "<span id='displayname'> Logged in as : 
-					<span class='dropdown'>
+			<?php echo "
+					<span id='displayname' class='display_name'> 
+						Logged in as : 
 						<span onclick='myFunction()' class='dropbtn'>
 							$displayname  
 						</span>|
 
-						<a href='logout.php'>Sign Out</a>
-						<div id='myDropdown' class='dropdown-content'>
-					   	 <a href='logout.php'>Edit Profile</a>
-					   	 <a href='add_items.php'>Manage Inventory</a>
-					   
- 						</div>
-
-					</span>
+						<a href='logout.php' id='sign_out_btn'>
+							Sign Out
+						</a>
 					</span>";?>
 		
 		<?php }else { ?>
