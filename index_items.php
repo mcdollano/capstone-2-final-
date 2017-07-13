@@ -25,17 +25,17 @@
 		          <h4 class="modal-title">Modal Header</h4>
 		        </div>
 		        <div class="modal-body">
-				     <?php
-				        $id = $_GET['id'];
-						$sql = "SELECT * FROM items WHERE item_id = '$id'";
-						$result = mysqli_query($conn,$sql);
+		<?php
+			$id = $_GET['id'];
+			$sql = "SELECT * FROM items WHERE item_id = '$id'";
+			$result = mysqli_query($conn,$sql);
 
-						if(mysqli_num_rows($result)) {
-						while($row = mysqli_fetch_assoc($result)) {
-						extract($row);
-					}
+			if(mysqli_num_rows($result)) {
+				while($row = mysqli_fetch_assoc($result)) {
+					extract($row);
 				}
-			          ?>
+			}
+		?>
 		          	<div class="row">
 						<div class="col-md-6">
 							<h2><?php echo $item_name; ?></h2>
@@ -63,7 +63,8 @@
 		$sql = "SELECT * FROM items WHERE item_name LIKE '%$name%'";
 	} else {
 		$cat = $_GET['cat'];
-		$sql = "SELECT * FROM items WHERE item_name LIKE '%$name%' && item_category='$cat'";
+		$sql = "SELECT * FROM items WHERE item_name LIKE '%$name%' && item_category or item_brand ='$cat'";
+
 	}
 			echo "<div class = 'row item-row-container'>";
 				$result = mysqli_query($conn,$sql);
@@ -71,7 +72,7 @@
 					while ($row = mysqli_fetch_assoc($result)) {
 						extract($row);
 
-						echo "<div class='col-sm-3 col-md-3 col-lg-3'>
+						echo "<div class='col-sm-6 col-md-3 col-lg-3'>
 								<a href='display_items.php?id=$item_id'>
 									<div class = 'thumbnail'>
 										<img src='$item_image' id='item_image' class='item_image'><br>

@@ -20,14 +20,12 @@ session_start();
 	<script src="/path/to/bootstrap.min.js"></script>
    	
 </head>
+<?php
+require_once 'partials/nav.php';
+?>
 <body id="body">
 
 	<?php
-		require_once 'partials/nav.php';
-		// require_once 'addtocart.php';
-		// require_once 'rightnav.php';
-		// require_once 'cartnav.php';
-		// require_once 'partials/items.php';
 		require_once 'library/script.php';
 		require_once 'library/script.js';
 		echo "

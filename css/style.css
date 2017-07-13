@@ -97,7 +97,8 @@ body {
 
 #login {
     margin-left: 30%;
-    color: rgb(59, 61, 57);  
+    color: rgb(59, 61, 57); 
+    /*display: none;*/
 
 }
 
@@ -123,8 +124,14 @@ body {
 }
 
 @media (max-width: 976px) {
-    #login, #cart_icon, #cart_badge {
+    #login, #logged_in_as, #display_username, #cart_icon, #sign_out_btn, #cart_badge {
         display: none;
+    }
+}
+
+@media (min-width: 450px) (max-width: 976px) {
+    #cart_icon {
+       margin-left: 20%;
     }
 }
 
@@ -147,7 +154,6 @@ body {
 }
 
 /* ------------------ END OF NAVBAR ------------------ */
-
 /* ------------------ RIGHT NAVBAR -------------------*/
 
 .sidenav2 {
@@ -414,7 +420,7 @@ body {
 }
 
 .register_container {
-    height: 500px;
+    height: 600px;
     margin-bottom: 20px;
 }
 
@@ -476,6 +482,30 @@ body {
     height: 100px;
     padding: 30px;
     border: 1px solid black;
+}
+
+@media (min-width: 630px) and (max-width: 767px) {
+    .item-row-container {
+        margin-left: 30%;
+    }
+}
+
+@media (min-width: 526px) and (max-width: 629px) {
+    .item-row-container {
+        margin-left: 20%;
+    }
+}
+ 
+@media (min-width: 394px) and (max-width: 525px) {
+    .item-row-container {
+        margin-left: 10%;
+    }
+}
+
+@media (min-width: 393px) {
+    .item-row-container {
+        margin-left: 7%;
+    }
 }
 
 /*----------------- INDEX ITEMS -----------------*/
@@ -761,7 +791,11 @@ body {
     padding-bottom: 50px;
 }
 
-
+@media (max-width: 425px) {
+    .descript_text {
+        padding-left: 50px;
+    }
+}
 
 /* --------- EDIT ITEMS -------- */
 
@@ -839,11 +873,20 @@ button {
 
 .delete_item_container {
     text-align: left;
+    margin-top: 30px;
+    padding-top: 50px;
 }
 
 .display_item_name {
     margin-bottom: 10px;    
 }
+
+@media (max-width: 767px) {
+    #delete_item_container {
+        padding-left: 50px;
+    }
+}
+
 
 /* ------------ ITEM FILTER -------------*/
 
@@ -896,8 +939,9 @@ button {
 }
 
 .checkout_info_container {
-    position: absolute;
+    position: fixed;
     left: 60%;
+    top: 250px;
     transform: translate(-50%, -50%);
     display: none;
     text-align: center;

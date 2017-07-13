@@ -44,10 +44,10 @@
 			if(isset($_SESSION['firstname'])){ ?>
 			<?php echo "
 					<span id='displayname' class='display_name'> 
-						Logged in as : 
-						<span onclick='myFunction()' class='dropbtn'>
-							$displayname  
-						</span>|
+						<span id='logged_in_as'>Logged in as : </span> 
+						<span id='display_username' onclick='myFunction()' class='dropbtn'>
+							$displayname |  
+						</span>
 
 						<a href='logout.php' id='sign_out_btn'>
 							Sign Out
@@ -61,7 +61,7 @@
 		<?php
 			if (isset($_SESSION['cart'])) {
 			echo "
-				<img src='images/cart_icon.png' style='font-size:30px;cursor:pointer' id='cart_icon' onclick='openNav2()'' onclick='closeNav2()'>
+				<img src='images/cart_icon.png' style='font-size:30px;cursor:pointer;' id='cart_icon' onclick='openNav2()'' onclick='closeNav2()'>
 
 				<span class = 'badge' id='cart_badge'>";
 					if (isset($_SESSION['cart'])) {
@@ -69,8 +69,8 @@
 					} else {
 						echo "0";
 					}
-			echo "</span>";			
-				
+			echo "</span>";	
+			
 			}	
 		?>
 	

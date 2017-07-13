@@ -47,6 +47,7 @@ function display_content() {
 		<?php
 			if (isset($_SESSION ['role']) && $_SESSION['role'] == 'admin') {
 				echo "
+				<div class='display_button_container'>
 					<a href = 'edit_items.php?id=$id'>
 							<input type='button' class='btn btn-default edit-btn' value='Edit'>
 						</a>
@@ -73,7 +74,7 @@ function display_content() {
 							<input type='button' onclick='showcart()' id='showcartBtn' class='btn btn-default' name='show_cart' value='Buy Now'>
 				";}
 				?>
-			
+
 				<form method="POST">
 					<div class="item_price_container">
 						<span> Price : </span>
@@ -114,7 +115,7 @@ function display_content() {
 				<p id="prod"></p>
 			</div> <!--item desc -->
 		</div> <!--container-->
-
+	</div> 
 
 <?php
 		} // while($row = mysqli_fetch_assoc($result))

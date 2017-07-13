@@ -32,6 +32,23 @@
 						<input type="text" class="form-control" name="edit_item_name" value="<?php echo $item_name;?>">
 					</div>
 			</div> 
+			<div class="display_item_brand1 show_item" id="item_show"> <!--hidden-->	
+					<div class="form-group">
+						<div class="item_title_container">
+							<label for="item_name">
+								<h4>Item Brand:</h4>
+							</label>
+						</div>
+						<select class='form-control show_item' name='edit_item_brand'>
+						<option>Michael Kors</option>
+						<option>Herschel</option>
+						<option>G-SHOCK</option>
+						<option>Anello</option>
+						<option>Coach</option>
+						<option>Tory Burch</option>
+					</select>
+					</div>
+			</div> 
 			<div class="display_item_price1 show_item" id="item_show">
 					<div class="form-group">
 						<div class="item_title_container">

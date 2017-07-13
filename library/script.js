@@ -28,7 +28,7 @@
 		function openNav2() {
 		document.getElementById('mySidenav2').style.width = "400px";
 		document.getElementById("navbtn").style.visibility = "hidden";
-		document.getElementById("body").style.marginRight = "420px";
+		// document.getElementById("body").style.marginRight = "420px";
 		document.getElementById("login").style.visibility = "hidden";
 		document.getElementById("logout").style.visibility = "hidden";
 	}
@@ -144,7 +144,6 @@ $(document).ready(function(){
 
 	$('#nav_close_btn').click(function(){
 		$('#cart_icon').show();
-		$('#displayname').show();
 		$('#cart_badge').show();
 	});
 

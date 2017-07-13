@@ -46,6 +46,12 @@
 					<input type="text" class="registerkey form-control" name="register_email" placeholder="Email" required>
 				</div>
 				<div class="form-group">
+					<input type="text" class="registerkey form-control" name="register_number" placeholder="Mobile Number" required>
+				</div>
+				<div class="form-group">
+					<input type="text" class="registerkey form-control" name="register_address" placeholder="Address" required>
+				</div>
+				<div class="form-group">
 					<input type="text" class="registerkey form-control" name="register_username" placeholder="Username" required>
 				</div>
 				<div class="form-group">

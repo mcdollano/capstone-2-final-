@@ -59,6 +59,7 @@
 						$grandtotal += $quantity * $item_price;
 					}
 
+
 					if (isset($_POST['remove_item'])) {
 						$key = $_GET['id'];
 						unset($_SESSION['cart'][$key]);
@@ -68,7 +69,7 @@
 			
 					if (isset($_POST['cancel_shopping'])) {
 						unset($_SESSION['cart']);
-						header('location:items.php');
+						header('location:index.php');
 					
 					}
 

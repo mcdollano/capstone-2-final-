@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2017 at 10:55 AM
+-- Generation Time: Jul 13, 2017 at 07:01 PM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.2
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -73,7 +73,8 @@ INSERT INTO `guest_customers` (`guest_id`, `guest_firstname`, `guest_lastname`, 
 (31, '', '', 0, '', ''),
 (32, '', '', 0, '', ''),
 (33, '', '', 0, '', ''),
-(34, '', '', 0, '', '');
+(34, '', '', 0, '', ''),
+(35, 'qweqwe', 'qweqwe', 123123, '123213', 'asdasd');
 
 -- --------------------------------------------------------
 
@@ -103,9 +104,10 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`item_id`, `item_name`, `item_description`, `item_image`, `item_image_1`, `item_image_2`, `item_image_3`, `item_image_4`, `item_image_5`, `item_price`, `item_category`, `item_quantity`, `item_brand`) VALUES
 (24, 'HERSCHEL CAMO ', 'HERSCHEL CAMO', 'item_images/herschel_black.png', '', '', '', '', '', 3500, 'Bags', 5, 'Herschel'),
-(29, 'HERSCHEL CROSSHATCH', 'HERSCHEL CROSSHATCH', 'item_images/herschel_crosshatch.jpg', '', '', '', '', '', 3500, 'Bags', 4, 'Herschel'),
-(31, 'MICHAEL KORS WATCH', 'WATCH', 'item_images/michaelkors_watch2.png', '', '', '', '', '', 3500, 'Watches', 5, 'Coach'),
-(32, 'HERSCHEL LUCITE', 'LOREM IPSUM DOLOR AMET', 'item_images/herschel_lucite.jpg', '', '', '', '', '', 3500, 'Bags', 5, 'Herschel');
+(31, 'MICHAEL KORS WATCH', 'WATCH', 'item_images/michaelkors_watch2.png', '', '', '', '', '', 3500, 'Watches', 5, 'Michael Kors'),
+(32, 'HERSCHEL LUCITE', 'LOREM IPSUM DOLOR AMET', 'item_images/herschel_lucite.jpg', '', '', '', '', '', 3500, 'Bags', 5, 'Herschel'),
+(33, 'HERSCHEL CROSSHATCH', 'CROSSHATCH', 'item_images/herschel_crosshatch.jpg', '', '', '', '', '', 3000, 'Bags', 5, 'Herschel'),
+(34, 'GSHOCK 1', 'LOREM IPSUM', 'item_images/gshock2.png', '', '', '', '', '', 3800, 'Watches', 5, 'G-SHOCK');
 
 -- --------------------------------------------------------
 
@@ -185,7 +187,13 @@ INSERT INTO `orders` (`order_id`, `user_id`, `guest_id`, `order_date`, `required
 (73, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
 (74, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
 (75, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 14000),
-(76, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000);
+(76, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(77, NULL, NULL, '2017-12-25', NULL, NULL, NULL, 'asdasd', 7000),
+(78, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 17500),
+(79, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(80, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(81, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 0),
+(82, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 0);
 
 -- --------------------------------------------------------
 
@@ -207,28 +215,18 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`order_details_id`, `order_id`, `item_id`, `order_quantity`, `item_price`, `sub_total`) VALUES
-(5, 40, 29, 3, 3500, 10500),
-(6, 41, 29, 2, 3000, 6000),
-(9, 44, 29, 3, 3500, 10500),
-(10, 45, 29, 2, 3500, 7000),
-(19, 62, 29, 6, 3500, 21000),
-(20, 65, 29, 2, 4500, 13500),
-(22, 66, 29, 5, 2500, 5000),
 (24, 66, 31, 2, 2500, 5000),
-(25, 67, 29, 2, 2500, 7500),
 (27, 67, 31, 3, 2500, 7500),
-(28, 68, 29, 2, 3500, 7000),
-(29, 69, 29, 2, 3500, 7000),
 (30, 70, 24, 2, 3500, 7000),
-(31, 71, 29, 6, 3500, 21000),
 (32, 71, 24, 6, 3500, 21000),
-(33, 72, 29, 3, 3500, 7000),
 (34, 72, 24, 2, 3500, 7000),
 (35, 72, 31, 2, 3500, 7000),
 (36, 73, 31, 2, 3500, 7000),
 (37, 74, 31, 2, 3500, 7000),
-(38, 75, 29, 4, 3500, 14000),
-(39, 76, 29, 2, 3500, 7000);
+(40, 77, 31, 2, 3500, 7000),
+(42, 78, 31, 2, 3500, 7000),
+(43, 78, 32, 2, 3500, 7000),
+(45, 80, 31, 2, 3500, 7000);
 
 -- --------------------------------------------------------
 
@@ -253,16 +251,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_username`, `user_password`, `user_number`, `user_address`, `user_role`) VALUES
-(1, 'admin', '', '', 'admin', 'secret', 0, '', 'admin'),
-(2, '', '', '', 'asda', 'asd', 0, '', 'regular'),
-(3, 'as', 'as', 'as', 'asda', 'asd', 0, '', 'regular'),
-(4, 'haha', 'haha', 'haha', 'haha', 'haha', 0, '', 'regular'),
-(5, 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 0, '', 'regular'),
-(6, 'mark', 'dollano', 'hahaha', 'mark', 'dollano', 0, '', 'regular'),
-(7, 'markmark', 'markmark', 'markmark', 'markmark', '57fcccd96609f97a735090e4', 0, '', 'regular'),
-(8, 'markmark', 'markmark', 'markmark', 'markmark', '57fcccd96609f97a735090e4aa1c74dcb02c95e6', 0, '', 'regular'),
-(9, 'admin', 'dollano', 'askjd', 'askdjask', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, '', 'regular'),
-(10, 'admin', 'admin', 'admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, '', 'regular');
+(23, 'admin', 'admin', 'admin', 'admin', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', 0, 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -310,27 +299,27 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `guest_customers`
 --
 ALTER TABLE `guest_customers`
-  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- Constraints for dumped tables
 --

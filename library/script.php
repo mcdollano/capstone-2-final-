@@ -6,20 +6,22 @@
 			$firstname = $_POST['register_firstname'];
 			$lastname = $_POST['register_lastname'];
 			$email = $_POST['register_email'];
+			$number = $_POST['register_number'];
+			$address = $_POST['register_address'];
 			$username = $_POST['register_username'];
 			$password = $_POST['register_password'];
 			$confirm_password = $_POST['confirm_password'];
 
 			if ($password == $confirm_password) {
+				
 				$password = sha1($password);
-
-				$sql = "INSERT INTO users(user_firstname,user_lastname, user_email,user_username,user_password,user_role)
+				$sql = "INSERT INTO users(user_firstname,user_lastname,user_email,user_number,user_address,user_username,user_password,user_role)
 							VALUES 
-						('$firstname','$lastname','$email','$username','$password', 'regular')";
+						('$firstname','$lastname','$email','$number','$address','$username','$password', 'regular')";
 						mysqli_query($conn, $sql);
-						echo "Registration Successful!";
+						echo "<script>alert('Registered Successfully!')</script>";
 					} else {
-						echo "Password did not match.";
+						echo "<script>alert('Username and Password did not match! Try again.')</script>";
 					}
 				}
 
@@ -28,6 +30,7 @@
 		if (isset($_POST['login'])) {   
 			$username = $_POST['login_username'];
 			$password = $_POST['login_password'];
+			$password = sha1($password);
 			
 			$sql = "SELECT * FROM users WHERE user_username = '$username' AND user_password = '$password'";
 
@@ -38,10 +41,11 @@
 					$_SESSION['user_id'] = $user_id;
 					$_SESSION['firstname'] = $user_firstname;
 					$_SESSION['role'] = $user_role;
-					header('location:index.php');	
+					echo "<script>alert('Logged In Successfully!')</script>";
+						echo "<script>window.location='index.php'</script>";	
 				}
 			} else {
-				echo "Username and Password didn't match.";
+				echo "<script>alert('Username and Password did not match! Try again.')</script>";
 			}
 		}
 
