@@ -12,7 +12,7 @@
 	echo "	<div class = 'item-filter-container'>
 				<form method = 'POST'>
 						<input type = 'text' name = 'item_name'  placeholder = 'Search Items'>
-						<input class = 'btn btn-primary' type = 'submit' name = 'search' value = 'Search' id = 'search_btn'>
+						<input type = 'submit' name = 'search' value = 'Search' id = 'search_btn'>
 				</form>
 			</div>
 		

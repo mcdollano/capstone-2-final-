@@ -3,15 +3,13 @@
 	session_start();
 	$id = $_GET['id'];
 	$quantity = $_POST['quantity'];
-	// $subtotal = $_POST['subtotal'];
-	
-	$addtocartmsg = "Item Successfully added to cart!";
 
 			if (isset($_POST['cartBtn'])) {
 				$_SESSION['cart'][$id] += $quantity;
-				$_SESSION['addtocartmsg'] = $addtocartmsg;
-			}
+			}	
 
+			echo "<script>alert('Item Added To Cart Successfully!');</script>";
 			header("location:display_items.php?id=$id");
+				
 
 ?>

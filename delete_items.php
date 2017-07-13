@@ -19,8 +19,9 @@
 
 		$sql3 = "DELETE FROM items WHERE item_id = '$id'";
 		mysqli_query($conn,$sql3);
-		header('location:items.php');
-		$_SESSION['delete_message'] = "Item Deleted Successfully!";
+		echo "<script>alert('Item Deleted!')</script>";
+		echo "<script>window.location='items.php'</script>";
+		
 	}
 	
 ?>	
@@ -56,6 +57,7 @@
 				</p>
 				<form method="POST">
 					<input type='submit' id ='delete_item_btn' class='btn btn-danger delete_item_btn' name="delete_item_btn" value='Delete'>
+
 					<a href ="items.php">
 						<input class="btn btn-default cancel_btn" type="button" name="cancel" value="Cancel">
 					</a>

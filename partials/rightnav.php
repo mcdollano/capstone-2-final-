@@ -15,7 +15,6 @@
 				<?php
 					require_once 'connection.php';
 					$grandtotal = 0;
-
 			
 					foreach ($_SESSION['cart'] as $key => $value) {
 						$sql = "SELECT * FROM items WHERE item_id = '$key'";
@@ -44,6 +43,7 @@
 													<div class='cart_quantity_container'>
 														Quantity : $value
 													</div>	
+
 													<div class='cart_subtotal_container'>
 														Subtotal : $subtotal
 													</div>												
@@ -204,7 +204,7 @@
 
 		<?php
 
-		if (isset($_SESSION['role']) && $_SESSION['role'] == 'regular' or 'admin') {
+		if (isset($_SESSION['role']) && ($_SESSION['role'] == 'regular' || $_SESSION['role'] == 'admin')) {
 		
 		echo "
 
@@ -222,13 +222,11 @@
 					</div>		
 				</div>
 			</div> 
-
 		";	
-
-		}
+		
+		} 
 
 		?>
-
 	</div>				
 </div>
 	

@@ -13,7 +13,9 @@ $id = $_GET['id'];
 
 			$sql2 = "UPDATE items SET item_name ='$name', item_description ='$description', item_price='$price',item_category='$category', item_quantity ='$quantity', item_image='$image' WHERE item_id='$id'";
 				mysqli_query($conn,$sql2);
-				$_SESSION['alert'] = 'dasdjhasjhdjasdhjahs';
-				header("location:display_items.php?id=$id");
+				echo "<script>alert('Changes in Item Saved Successfully!')</script>";
+				echo "<script>window.location='items.php'</script>";
+
+
 		} //if isset
 ?>

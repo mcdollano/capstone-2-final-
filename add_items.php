@@ -48,9 +48,16 @@ function display_content(){ ?>
 				<label for="item_image"><h4>Upload Image :<h4></label>
 				<input type="file" name="item_image" required>
 			</div>
-			<input type="submit" name="add_new" class="btn btn-primary add_item_btn" value="Add Items">
-			<input type="submit" name="cancel_add" class="btn btn-default" value="Cancel">
-		</form>		
+		
+			<input type="submit" name="add_new" class="add_item_btn" value="Add Items">
+
+			<a href="items.php">
+				<input type="button" name="cancel_add" class="cancel_add_items" value="Cancel">
+			</a>	
+
+		</form>	
+
+	
 	</div>
 
 <?php

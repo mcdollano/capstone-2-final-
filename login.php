@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<div class="forgot_password_container">
-					<span>Forgot your Password?</span> <a href="#">Click here</a><br>
+					<span>Forgot your Password?</span> <a href="#" style="color: rgb(59, 61, 57);">Click here</a><br>
 				</div>
 				<div class="form-group login-btn-container">
 					<input type="submit" class="btn btn-primary login-btn form-control" name="login" value="Log In" id="login_button">

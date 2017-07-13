@@ -116,6 +116,8 @@ $(document).ready(function(){
 		$('#cart_icon').show();
 		$('#login_container').show();
 		$('#displayname').show();
+		$('#cart_badge').show();
+
 
 	});
 
@@ -132,18 +134,23 @@ $(document).ready(function(){
 		$('#cart_icon').hide();
 		$('#login_container').hide();
 		$('#displayname').hide();
+		$('#cart_badge').hide();
 	});
 
 	$('#navbtn').click(function(){
 		$('#cart_icon').hide();
+		$('#cart_badge').hide();
 	});
 
 	$('#nav_close_btn').click(function(){
 		$('#cart_icon').show();
 		$('#displayname').show();
+		$('#cart_badge').show();
 	});
 
-
+	$('#cart_side_bar').click(function(){
+		// $('#mySidenav').css('width','0');
+	});
 
 
 	function getSubtotal(){
@@ -152,6 +159,11 @@ $(document).ready(function(){
 		var getSub = document.getElementById("getSub");	
 		getSub.value = parseInt(quantity) * parseInt(price);	
 	}
+
+
+
+
+
 
 
 </script>

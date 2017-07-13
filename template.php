@@ -30,6 +30,10 @@ session_start();
 		// require_once 'partials/items.php';
 		require_once 'library/script.php';
 		require_once 'library/script.js';
+		echo "
+			<div style = 'margin-top: 100px;'>
+			</div>
+		";
 		display_content();
 		require_once 'partials/footer.php';
 	?>

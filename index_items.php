@@ -7,20 +7,12 @@
 			<a href="items.php?cat=Bags"><span class="item_button">BAGS&nbsp;</span></a>
 			<a href="items.php?cat=Watches"><span class="item_button">WATCHES&nbsp;</span></a>
 
-		<?php
-			if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
-				echo " <a href='add_items.php' class='btn btn-primary' id='add_new'>Add Products</a>	
-			";}			
-		?>
-	
 		<div class='item_filter_container'>
 			<!-- <?php require 'item_filter.php'; ?> -->
 		</div>
 
 		</div> <!--catalog_header_container-->
 	</div>	<!--catalog header -- >
-
-										<!-- MODAL >
 
 	  <!-- Modal -->
 	 	<div class="modal fade" id="myModal" role="dialog">
@@ -60,7 +52,7 @@
 		      </div>
 		    </div>
 		</div>
-	</div>
+</div>
 	
 	<?php 
 
@@ -91,8 +83,15 @@
 								</a>
 						 	 </div>";//column
 				} // while 
-			} // if 
-		echo "</div>" ?>
-	</div>
-</div>
+			} else {
+				echo "
+					<div class='no_item_container'>
+						<div class='no_item_content row'>
+							<p class='panel'>No available item in this category.</p>
+						</div>
+					</div>	
+				</div>
+				";
+			}
+	echo "</div>" ?>
 

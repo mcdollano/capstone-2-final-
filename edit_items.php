@@ -21,12 +21,12 @@
 		<div class="col-sm-6 col-md-6 col-lg-6 item_pic_container style='padding:0;'">
 			<img id='item_pic' src= <?php echo $item_image; ?>>
 		</div>
-		<div class="col-sm-6 col-md-6 col-lg-6" id="description_container">
+		<div class="col-sm-6 col-md-6 col-lg-6" id="description_container panel">
 			<div class="display_item_name1 show_item" id="item_show"> <!--hidden-->	
 					<div class="form-group">
 						<div class="item_title_container">
 							<label for="item_name">
-								<h4>Item Name:</h4>
+								<h4>Item Name :</h4>
 							</label>
 						</div>
 						<input type="text" class="form-control" name="edit_item_name" value="<?php echo $item_name;?>">
@@ -35,7 +35,7 @@
 			<div class="display_item_price1 show_item" id="item_show">
 					<div class="form-group">
 						<div class="item_title_container">
-							<label for="item_price"><h4>Price:</h4></label>
+							<label for="item_price"><h4>Price :</h4></label>
 						</div>
 						<input type="text" class="form-control" name="edit_item_price" value="Php <?php echo $item_price;?>">
 					</div>
@@ -43,7 +43,7 @@
 			<div class="display_item_quantity1 show_item" id="item_show">
 					<div class="form-group">
 						<div class="item_title_container">
-							<label for="item_quantity"><h4>Quantity of Stocks:</h4></label>
+							<label for="item_quantity"><h4>Quantity of Stocks :</h4></label>
 						</div>	
 						<input type="text" class="form-control" name="edit_item_quantity" value="<?php echo $item_quantity;?>">
 					</div>
@@ -52,7 +52,7 @@
 					<div class="form-group">
 						<div class="item_title_container">
 							<label for="item_description">
-								<h4>Item Description:</h4>
+								<h4>Item Description :</h4>
 							</label>
 						</div>	
 						<input type="text" class="form-control" name="edit_item_description" value="<?php echo $item_description;?>">
@@ -60,9 +60,9 @@
 			</div><!--hidden-->
 				<div class='form-group'>
 					<div class="item_title_container">
-						<label for='item_category'>
-							Category:
-						</label>
+						<h4>
+							Category :
+						</h4>
 					</div>
 					<select class='form-control show_item' name='edit_item_category'>
 						<option>Shoes</option>
@@ -74,10 +74,10 @@
 					<div class="form-group">
 						<div class="item_title_container">
 							<label for="item_image">
-								<h4>Upload Image:</h4>
+								<h4>Upload Image :</h4>
 							</label>
 						</div>
-						<input type="file" class="form-control" name="edit_item_image" value="<?php echo $item_image;?>">
+						<input type="file" name="edit_item_image" value="<?php echo $item_image;?>">
 					</div>
 			</div>
 					<div class="form-group edit_save">
@@ -86,13 +86,13 @@
 							</p>
 						</div>
 					</div>
+
 					<div class="edit_option_btn">
-						<input type="submit" data-toggle="page-alert" data-toggle-id="1" name="save_button" class="btn btn-primary" value="Save">
+						<input type="submit" name="save_button" class="edit_item_save" value="Save">
 					
-		
 	</form>
 						<a href="items.php">
-							<input type="button" class="btn btn-default cancel-btn" name="cancel" value="Back To Catalog">
+							<input type="button" class="edit_item_cancel" name="cancel" value="Cancel">
 						</a>
 					</div>	
 		</div><!--description_container-->

@@ -34,6 +34,3 @@
 			</section>
 		</div>
 </div>
-		<!-- <hr> -->
-</body>
-</html>

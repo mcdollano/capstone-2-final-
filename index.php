@@ -6,16 +6,7 @@
 	require 'connection.php';
 	?>
 
-		<div class="row banner-container">
-			<div class="col-sm-6 col-md-6 col-lg-6 banner-caption">
-				<h1>MICHAEL KORS</h1>
-				<h1>HYBRID WATCH</h1>
-				<h2>The best of both worlds.</h2>
-				<a class="waves-effect waves-light btn banner-btn">BUY NOW</a>
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-6 banner-image-container">
-				<img src="images/watch_model_female.jpg" id="banner-image">
-			</div>
+		<div class="banner-container">
 		</div>
 		<hr>
 

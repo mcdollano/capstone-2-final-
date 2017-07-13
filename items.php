@@ -10,7 +10,6 @@
 	</div>
 
 <?php
-
 	if (isset($_POST['delete_item_btn'])) {
 		echo $_SESSION['delete_message'];
 	}

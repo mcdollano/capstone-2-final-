@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2017 at 10:48 AM
+-- Generation Time: Jul 13, 2017 at 10:55 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.2
 
@@ -103,10 +103,9 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`item_id`, `item_name`, `item_description`, `item_image`, `item_image_1`, `item_image_2`, `item_image_3`, `item_image_4`, `item_image_5`, `item_price`, `item_category`, `item_quantity`, `item_brand`) VALUES
 (24, 'HERSCHEL CAMO ', 'HERSCHEL CAMO', 'item_images/herschel_black.png', '', '', '', '', '', 3500, 'Bags', 5, 'Herschel'),
-(28, 'HERSCHEL CAMO', 'HERSCHEL CAMO', 'item_images/herschel_camo.png', '', '', '', '', '', 4500, 'Bags', 5, 'Herschel'),
 (29, 'HERSCHEL CROSSHATCH', 'HERSCHEL CROSSHATCH', 'item_images/herschel_crosshatch.jpg', '', '', '', '', '', 3500, 'Bags', 4, 'Herschel'),
-(30, 'HERSCHEL FLORAL', 'FLORAL', 'item_images/herschel_floria.jpg', '', '', '', '', '', 3000, 'Bags', 2, 'Herschel'),
-(31, 'MICHAEL KORS WATCH', 'WATCH', 'item_images/michaelkors_watch2.png', '', '', '', '', '', 2500, 'Watches', 5, 'Coach');
+(31, 'MICHAEL KORS WATCH', 'WATCH', 'item_images/michaelkors_watch2.png', '', '', '', '', '', 3500, 'Watches', 5, 'Coach'),
+(32, 'HERSCHEL LUCITE', 'LOREM IPSUM DOLOR AMET', 'item_images/herschel_lucite.jpg', '', '', '', '', '', 3500, 'Bags', 5, 'Herschel');
 
 -- --------------------------------------------------------
 
@@ -176,7 +175,17 @@ INSERT INTO `orders` (`order_id`, `user_id`, `guest_id`, `order_date`, `required
 (63, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 20500),
 (64, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 20500),
 (65, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 20500),
-(66, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 31500);
+(66, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 31500),
+(67, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 28000),
+(68, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(69, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(70, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(71, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 42000),
+(72, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 24500),
+(73, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(74, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(75, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 14000),
+(76, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000);
 
 -- --------------------------------------------------------
 
@@ -200,16 +209,26 @@ CREATE TABLE `order_details` (
 INSERT INTO `order_details` (`order_details_id`, `order_id`, `item_id`, `order_quantity`, `item_price`, `sub_total`) VALUES
 (5, 40, 29, 3, 3500, 10500),
 (6, 41, 29, 2, 3000, 6000),
-(7, 42, 30, 1, 3000, 3000),
-(8, 43, 30, 2, 3000, 6000),
 (9, 44, 29, 3, 3500, 10500),
 (10, 45, 29, 2, 3500, 7000),
 (19, 62, 29, 6, 3500, 21000),
 (20, 65, 29, 2, 4500, 13500),
-(21, 65, 28, 3, 4500, 13500),
 (22, 66, 29, 5, 2500, 5000),
-(23, 66, 28, 2, 2500, 5000),
-(24, 66, 31, 2, 2500, 5000);
+(24, 66, 31, 2, 2500, 5000),
+(25, 67, 29, 2, 2500, 7500),
+(27, 67, 31, 3, 2500, 7500),
+(28, 68, 29, 2, 3500, 7000),
+(29, 69, 29, 2, 3500, 7000),
+(30, 70, 24, 2, 3500, 7000),
+(31, 71, 29, 6, 3500, 21000),
+(32, 71, 24, 6, 3500, 21000),
+(33, 72, 29, 3, 3500, 7000),
+(34, 72, 24, 2, 3500, 7000),
+(35, 72, 31, 2, 3500, 7000),
+(36, 73, 31, 2, 3500, 7000),
+(37, 74, 31, 2, 3500, 7000),
+(38, 75, 29, 4, 3500, 14000),
+(39, 76, 29, 2, 3500, 7000);
 
 -- --------------------------------------------------------
 
@@ -275,7 +294,7 @@ ALTER TABLE `orders`
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`order_details_id`),
   ADD KEY `order_id` (`order_id`),
-  ADD KEY `item_id` (`item_id`);
+  ADD KEY `order_details_ibfk_2` (`item_id`);
 
 --
 -- Indexes for table `users`
@@ -296,17 +315,17 @@ ALTER TABLE `guest_customers`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -328,7 +347,7 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

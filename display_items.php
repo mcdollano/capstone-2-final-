@@ -14,11 +14,6 @@ function display_content() {
 		while($row = mysqli_fetch_assoc($result)) {
 			extract($row); 
 ?>
-	<?php
-		if (isset($_POST['cartBtn']) && [$id] == $id){
-			echo $_SESSION['addtocartmsg'];
-		}
-	?>
 
 	<form method="POST">
 		<div class="row display_items_container">
@@ -66,8 +61,6 @@ function display_content() {
 						</a>
 
 						<input type='button' onclick='showcart()' id='showcartBtn' class='btn btn-default' name='show_cart' value='Buy Now'>	
-
-	
 						";
 						
 				} else {
@@ -77,8 +70,7 @@ function display_content() {
 						<input type='button' class='btn btn-default cancel-btn' name='cancel' value='Back To Catalog'>
 					</a>
 
-							<input type='button' onclick='showcart()' id='showcartBtn' class='btn btn-default' name='show_cart' value='Buy Now'>			
-		
+							<input type='button' onclick='showcart()' id='showcartBtn' class='btn btn-default' name='show_cart' value='Buy Now'>
 				";}
 				?>
 			
@@ -112,7 +104,7 @@ function display_content() {
 
 							<input type="submit" onclick="openNav2()" name="cartBtn" value="Add to cart" class="add_to_cart">
 
-							<input type='button' onclick='hidecart()' id='cancelcartBtn' class='btn btn-default' name='cancel_cart' value='Cancel'>	
+							<input type='button' onclick='hidecart()' id='cancelcartBtn' name='cancel_cart' value='Cancel'>	
 
 						</div>	
 
