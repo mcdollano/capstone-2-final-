@@ -63,7 +63,7 @@
 		$sql = "SELECT * FROM items WHERE item_name LIKE '%$name%'";
 	} else {
 		$cat = $_GET['cat'];
-		$sql = "SELECT * FROM items WHERE item_name LIKE '%$name%' && item_category or item_brand ='$cat'";
+		$sql = "SELECT * FROM items WHERE item_brand = '$cat' || item_category ='$cat'";
 
 	}
 			echo "<div class = 'row item-row-container'>";

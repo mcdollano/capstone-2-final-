@@ -38,8 +38,8 @@ function display_content(){ ?>
 					<option>Coach</option>
 					<option>G Shock</option>
 					<option>Herschel</option>
-					<option>Kate Spade</option>
-					<option>Long Champ</option>
+					<option>Anello</option>
+					<option>Tory Burch</option>
 					<option>Michael Kors</option>					
 					<option>Tory Burch</option>
 				</select>

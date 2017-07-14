@@ -121,10 +121,12 @@
 						$guest_lastname = $_POST['guest_lastname'];
 						$guest_email = $_POST['guest_email'];
 						$guest_number = $_POST['guest_number'];
-						$guest_address = $_POST['guest_address'];
+						// $guest_address = $_POST['guest_address'];
+						$guest_shipping_address = $_POST['shipping_address'];
 						$guest_date_ordered = $_POST['guest_date_ordered'];
+							
 
-							$sql3 = "INSERT INTO orders (order_date, shipping_address, grand_total) VALUES ('$guest_date_ordered', '$guest_address', '$grandtotal')";
+							$sql3 = "INSERT INTO orders (order_date, shipping_address, grand_total) VALUES ('$guest_date_ordered', '$guest_shipping_address', '$grandtotal')";
 
 							mysqli_query($conn, $sql3);
 							$order_id = mysqli_insert_id($conn);
@@ -209,11 +211,15 @@
 		
 		echo "
 
-		<div class = 'grandtotal_checkout'>
+		<div class = 'grandtotal_checkout'>	
+				<span>Shipping Address : </span>
+			<form method='POST'>	
+				<input type='text' name='shipping_address' id='shipping_address' required>
+			
 				<h1>GRAND TOTAL : $grandtotal </h1> 
-				<form method='POST'>
+				
 					<input type='submit' id='checkout' name='checkout_regular' value='Check Out'>
-				</form>
+			</form>
 
 				<div class='row cancel_shopping_container'>
 					<div class='col-md-5 col-lg-5'>

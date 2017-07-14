@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2017 at 07:01 PM
+-- Generation Time: Jul 14, 2017 at 10:39 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -105,9 +105,12 @@ CREATE TABLE `items` (
 INSERT INTO `items` (`item_id`, `item_name`, `item_description`, `item_image`, `item_image_1`, `item_image_2`, `item_image_3`, `item_image_4`, `item_image_5`, `item_price`, `item_category`, `item_quantity`, `item_brand`) VALUES
 (24, 'HERSCHEL CAMO ', 'HERSCHEL CAMO', 'item_images/herschel_black.png', '', '', '', '', '', 3500, 'Bags', 5, 'Herschel'),
 (31, 'MICHAEL KORS WATCH', 'WATCH', 'item_images/michaelkors_watch2.png', '', '', '', '', '', 3500, 'Watches', 5, 'Michael Kors'),
-(32, 'HERSCHEL LUCITE', 'LOREM IPSUM DOLOR AMET', 'item_images/herschel_lucite.jpg', '', '', '', '', '', 3500, 'Bags', 5, 'Herschel'),
-(33, 'HERSCHEL CROSSHATCH', 'CROSSHATCH', 'item_images/herschel_crosshatch.jpg', '', '', '', '', '', 3000, 'Bags', 5, 'Herschel'),
-(34, 'GSHOCK 1', 'LOREM IPSUM', 'item_images/gshock2.png', '', '', '', '', '', 3800, 'Watches', 5, 'G-SHOCK');
+(32, 'HERSCHEL LUCITE', 'LOREM IPSUM DOLOR AMET', 'item_images/herschel_lucite.png', '', '', '', '', '', 3500, 'Bags', 5, 'Herschel'),
+(33, 'HERSCHEL CROSSHATCH', 'CROSSHATCH', 'item_images/herschel_crosshatch.png', '', '', '', '', '', 3000, 'Bags', 5, 'Herschel'),
+(34, 'GSHOCK 1', 'LOREM IPSUM', 'item_images/gshock4.png', '', '', '', '', '', 3500, 'Watches', 5, 'G-SHOCK'),
+(35, 'G SHOCK 2', 'NEW ARRIVAL', 'item_images/gshock1.png', '', '', '', '', '', 4500, 'Watches', 6, 'G Shock'),
+(36, 'COACH 1', 'LOREM IPSUM', 'item_images/coach1.png', '', '', '', '', '', 4500, 'Bags', 8, 'Coach'),
+(37, 'COACH 2', 'LOREM IPSUM', 'item_images/coach2.png', '', '', '', '', '', 5500, 'Bags', 8, 'Coach');
 
 -- --------------------------------------------------------
 
@@ -193,7 +196,12 @@ INSERT INTO `orders` (`order_id`, `user_id`, `guest_id`, `order_date`, `required
 (79, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
 (80, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
 (81, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 0),
-(82, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 0);
+(82, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 0),
+(83, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 7000),
+(84, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 46000),
+(85, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 20000),
+(86, NULL, NULL, '0000-00-00', NULL, NULL, NULL, '', 12500),
+(87, NULL, NULL, '0000-00-00', NULL, NULL, NULL, 'naga city', 7000);
 
 -- --------------------------------------------------------
 
@@ -226,7 +234,20 @@ INSERT INTO `order_details` (`order_details_id`, `order_id`, `item_id`, `order_q
 (40, 77, 31, 2, 3500, 7000),
 (42, 78, 31, 2, 3500, 7000),
 (43, 78, 32, 2, 3500, 7000),
-(45, 80, 31, 2, 3500, 7000);
+(45, 80, 31, 2, 3500, 7000),
+(46, 83, 31, 2, 3500, 7000),
+(47, 84, 32, 2, 3500, 7000),
+(48, 84, 36, 2, 3500, 7000),
+(49, 84, 35, 2, 3500, 7000),
+(50, 84, 34, 2, 3500, 7000),
+(51, 84, 31, 2, 3500, 7000),
+(52, 84, 24, 2, 3500, 7000),
+(53, 85, 32, 2, 3000, 6000),
+(54, 85, 24, 2, 3000, 6000),
+(55, 85, 33, 2, 3000, 6000),
+(56, 86, 32, 1, 4500, 9000),
+(57, 86, 36, 2, 4500, 9000),
+(58, 87, 32, 2, 3500, 7000);
 
 -- --------------------------------------------------------
 
@@ -304,17 +325,17 @@ ALTER TABLE `guest_customers`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `users`
 --

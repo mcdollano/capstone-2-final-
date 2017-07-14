@@ -6,10 +6,12 @@
 	require 'connection.php';
 	?>
 
-		<div class="banner-container">
-		</div>
-		<hr>
-
+		<!-- <div class="banner-container"> -->
+			<video muted autoplay loop>
+				<source src="banner_video.mp4">
+			</video>
+		<!-- </div> -->
+		
 		<h2>FEATURED BRANDS</h2>
 		<div class="container">
 			<div class="row featured_brands">

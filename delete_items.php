@@ -25,7 +25,7 @@
 	}
 	
 ?>	
-	<div class="row">
+	<div class="row delete_main_container">
 		<div class="col-sm-6 col-md-6 col-lg-6">
 			<img id='item_pic' src= <?php echo $item_image;?>>
 		</div>

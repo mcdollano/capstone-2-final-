@@ -29,6 +29,7 @@ body {
     transition: 0.5s;
     padding-top: 60px;
     text-align: left;
+    opacity: 0.8;
 }
 
 .sidenav a {
@@ -234,7 +235,7 @@ body {
 
 .grandtotal_checkout {
     padding-left: 10px;
-    margin-top: 70px;
+    margin-top: 50px;
     text-align: left;
     bottom: 0px;
     margin-left: 50px;
@@ -269,7 +270,20 @@ body {
     height: 100vh;
 }
 
+#shipping_address {
+    width: 100%;
+    color: rgb(59, 61, 57);
+}
+
 /* ------------------ INDEX ------------------ */
+
+video {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: -1;
+}
+
 
 #banner-image {
     width: 500px;
@@ -329,7 +343,7 @@ body {
 .banner-container {
     width: 100vw;
     margin-bottom: 0;
-    background: url(../images/mk_model.jpg);
+    /*background: url(../images/mk_model.jpg);*/
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -433,9 +447,9 @@ body {
 /* ---------------- ITEMS ------------------*/ 
 
 .thumbnail {
-    width: 300px;
+    width: 280px;
     font-size: 20px;
-    height: 420px;
+    height: 350px;
     text-align: center;
     margin-bottom: 20px;
     padding-top: 20px;
@@ -504,7 +518,7 @@ body {
 
 @media (min-width: 393px) {
     .item-row-container {
-        margin-left: 7%;
+        /*margin-left: 7%;*/
     }
 }
 
@@ -528,6 +542,11 @@ body {
     padding: 10px;
     width: 120px;
     margin: auto;
+}
+
+#item_image {
+    max-width: 180px;
+    max-height: 210px;
 }
 
 
@@ -743,6 +762,7 @@ body {
 
 #item_pic_container {
     max-width: 550px;
+    padding-top: 50px;
 }
 
 .panel-container {
@@ -867,9 +887,11 @@ button {
     background-color: rgb(234, 234, 234);
 }
 
-
-
 /* ------------ DELETE ITEMS -------------*/ 
+
+.delete_main_container {
+    margin-bottom: 180px;
+}
 
 .delete_item_container {
     text-align: left;
@@ -886,7 +908,6 @@ button {
         padding-left: 50px;
     }
 }
-
 
 /* ------------ ITEM FILTER -------------*/
 
@@ -916,7 +937,7 @@ button {
 
 .cart_image_container {
     background-color: white;
-    max-width: 110px;
+    width: 100px;
     height: 110px;
 
 }
@@ -926,8 +947,10 @@ button {
 }
 
 .cart_image_container img {
-   width: 102px;
-   height: 102px;
+   width: 90px;
+   height: 90px;
+   padding-left: 10px;
+   padding-top: 10px;
 }
 
 .check_out_phpcontainer {
@@ -986,7 +1009,6 @@ button {
 .footer-wrapper {
     padding-bottom: 10px;
     bottom: 0;
-
 }
 
 #login_button, #register_button {
